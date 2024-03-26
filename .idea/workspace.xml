@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4433e09-6b2a-461d-8240-6f6276c81a31" name="Changes" comment="Update README.md">
-      <change afterPath="$PROJECT_DIR$/src/SampleClass.java" afterDir="false" />
-    </list>
+    <list default="true" id="c4433e09-6b2a-461d-8240-6f6276c81a31" name="Changes" comment="Update test class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +46,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711469322905</updated>
-      <workItem from="1711469324177" duration="902000" />
+      <workItem from="1711469324177" duration="1380000" />
     </task>
     <task id="LOCAL-00001" summary="Update README.md">
       <created>1711469765448</created>
@@ -57,7 +55,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711469765448</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update test class">
+      <created>1711470284515</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711470284515</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -65,6 +70,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update README.md" />
+    <MESSAGE value="Update test class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update test class" />
   </component>
 </project>
