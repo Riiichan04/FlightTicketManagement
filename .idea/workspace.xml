@@ -4,8 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4433e09-6b2a-461d-8240-6f6276c81a31" name="Changes" comment="Adding first frame">
+    <list default="true" id="c4433e09-6b2a-461d-8240-6f6276c81a31" name="Changes" comment="Complete Model">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/IController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/account.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/AccountCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/AccountSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/AddFlight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/AmountFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/BrandFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/CreateAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Date.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/DateFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/DeleteAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Filter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Flight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/FlightStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/FlightSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/IModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ListAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ListFlight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/MainSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ManagerAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/NoFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Observable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Plane.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/RemoveFlight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Route.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/StaffAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/TicketDecorator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/TicketSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/UpdateFlight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/UpdatePassword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/UpdateUsername.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utilities/DialogCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utilities/FileConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utilities/FileLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utilities/JDialogCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/AdminPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/StaffPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/TicketPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/UserPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/CustomLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/FontLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/FontLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SignInFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/SignInPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SignInPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/WorkFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/WorkFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,15 +67,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -43,38 +98,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Coding/NLU/Y2HK2/FlightTicketManagement&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/Coding/NLU/Y2HK2/FlightTicketManagement/src/model",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Coding\NLU\Y2HK2\FlightTicketManagement\src\model" />
       <recent name="E:\Coding\NLU\Y2HK2\FlightTicketManagement\src\asset\font" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Coding\NLU\Y2HK2\FlightTicketManagement\src\utilities" />
       <recent name="E:\Coding\NLU\Y2HK2\FlightTicketManagement\src\asset\image" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainFrame">
-    <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="view.MainFrame" />
+  <component name="RunManager" selected="Application.WorkFrame">
+    <configuration name="CustomLabel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utilities.CustomLabel" />
       <module name="FlightTicketManagement" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="view.*" />
+          <option name="PATTERN" value="utilities.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,8 +139,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestButton" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="view.TestButton" />
+    <configuration name="Date" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.Date" />
+      <module name="FlightTicketManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DialogCreator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="utilities.DialogCreator" />
+      <module name="FlightTicketManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="utilities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tedt.Test" />
+      <module name="FlightTicketManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tedt.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorkFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.WorkFrame" />
       <module name="FlightTicketManagement" />
       <extension name="coverage">
         <pattern>
@@ -97,8 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainFrame" />
-        <item itemvalue="Application.TestButton" />
+        <item itemvalue="Application.WorkFrame" />
+        <item itemvalue="Application.DialogCreator" />
+        <item itemvalue="Application.CustomLabel" />
+        <item itemvalue="Application.Date" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -114,7 +213,21 @@
       <workItem from="1711473752365" duration="29000" />
       <workItem from="1715307589352" duration="5734000" />
       <workItem from="1715577420063" duration="4523000" />
-      <workItem from="1715592742469" duration="8020000" />
+      <workItem from="1715592742469" duration="8665000" />
+      <workItem from="1715660938166" duration="973000" />
+      <workItem from="1715739859640" duration="1704000" />
+      <workItem from="1715795173358" duration="155000" />
+      <workItem from="1715908884242" duration="637000" />
+      <workItem from="1716143289011" duration="9741000" />
+      <workItem from="1716313457508" duration="1670000" />
+      <workItem from="1716356539610" duration="8752000" />
+      <workItem from="1716523114626" duration="732000" />
+      <workItem from="1716792268259" duration="1384000" />
+      <workItem from="1716809214255" duration="5165000" />
+      <workItem from="1716886341956" duration="1790000" />
+      <workItem from="1716994114400" duration="2056000" />
+      <workItem from="1717087223327" duration="2416000" />
+      <workItem from="1717212468781" duration="48968000" />
     </task>
     <task id="LOCAL-00001" summary="Update README.md">
       <created>1711469765448</created>
@@ -151,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715618105843</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adding first frame">
+      <created>1715660512907</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715660512907</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +294,8 @@
     <MESSAGE value="Update" />
     <MESSAGE value="update test class" />
     <MESSAGE value="Adding first frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding first frame" />
+    <MESSAGE value="Complete Model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete Model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

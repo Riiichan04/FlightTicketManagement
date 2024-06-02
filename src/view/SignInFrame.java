@@ -1,9 +1,12 @@
 package view;
 
+import model.Account;
+import utilities.JDialogCreator;
+
 import javax.swing.*;
 
-public class MainFrame extends JFrame {
-    public MainFrame() throws Exception {
+public class SignInFrame extends JFrame implements View {
+    public SignInFrame() throws Exception {
         setTitle("Flight Ticket Management");
         setSize(1000, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -15,7 +18,8 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) throws Exception {
-        new MainFrame();
+    @Override
+    public void update(JDialogCreator dialog) {
+
     }
 }

@@ -1,4 +1,4 @@
-package controller;
+package utilities;
 
 import java.awt.*;
 import java.io.File;
