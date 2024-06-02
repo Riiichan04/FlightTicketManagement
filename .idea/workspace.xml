@@ -5,59 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4433e09-6b2a-461d-8240-6f6276c81a31" name="Changes" comment="Complete Model">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/IController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/account.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/AccountCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/AccountSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/AddFlight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/AmountFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/BrandFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/CreateAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Date.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/DateFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/DeleteAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Filter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Flight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/FlightStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/FlightSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/IModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/ListAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/ListFlight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/MainSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/ManagerAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/NoFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Observable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Plane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/RemoveFlight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Route.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/StaffAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/TicketDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/TicketSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/UpdateFlight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/UpdatePassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/UpdateUsername.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utilities/DialogCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utilities/FileConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utilities/FileLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utilities/JDialogCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/AdminPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/StaffPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/TicketPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/UserPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestApp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/CustomLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/FontLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/FontLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/ImageLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SignInFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SignInPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SignInPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/WorkFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/WorkFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +176,7 @@
       <workItem from="1716886341956" duration="1790000" />
       <workItem from="1716994114400" duration="2056000" />
       <workItem from="1717087223327" duration="2416000" />
-      <workItem from="1717212468781" duration="48968000" />
+      <workItem from="1717212468781" duration="49494000" />
     </task>
     <task id="LOCAL-00001" summary="Update README.md">
       <created>1711469765448</created>
@@ -271,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715660512907</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Complete Model">
+      <created>1717323003344</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717323003344</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
