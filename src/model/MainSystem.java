@@ -85,6 +85,11 @@ public class MainSystem extends ListAccount {
         this.ticketSystem.statistic();
     }
 
+    public List<Flight> displayFlightInclude(TicketDecorator decorator) {
+        this.ticketSystem.setDecorator(decorator);
+        return this.ticketSystem.viewFlightIncluded();
+    }
+
     public void displayTicket(String id) {
         this.ticketSystem.displayTicket(id);
     }

@@ -1,6 +1,6 @@
 ### IntelliJ IDEA ###
 FlightTicketManagement.iml
-.idea/
+.idea
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/

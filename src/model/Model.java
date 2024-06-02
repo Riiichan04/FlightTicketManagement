@@ -56,6 +56,9 @@ public class Model implements Observable {
     public void statistic(TicketDecorator decorator) {
         this.mainSystem.statistic(decorator);
     }
+    public void displayFlightStatistic(TicketDecorator decorator) {
+        this.mainSystem.displayFlightInclude(decorator);
+    }
     public void displayTicket(String id) {
         this.mainSystem.displayTicket(id);
     }
