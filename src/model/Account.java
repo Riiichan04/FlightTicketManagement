@@ -46,6 +46,7 @@ public abstract class Account extends ListAccount {
     public boolean updateUsername(String username) throws Exception {
         if (this.isChangedUsername) return false;
         else {
+            if (getListAccount().containsKey(username)) return false;
             this.username = username;
             this.isChangedUsername = true;
             FileConverter.updateAccount(this);
