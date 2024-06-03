@@ -1,27 +1,51 @@
 package view;
 
+import model.*;
 import utilities.CustomLabel;
 import utilities.FontLoader;
-import model.Account;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public abstract class UserPanel extends JPanel {
+    protected ListFlight listFlight;
+    protected ListAccount listAccount;
+    protected IModel model;
     protected Account currentAccount;
     protected JPanel sidePanel;
     protected JPanel resultPanel;
-    public UserPanel(Account currentAccount) throws Exception {
+    protected AccountPanel accountPanel;
+    protected TicketPanel ticketPanel;
+    protected FlightPanel flightPanel;
+    protected CardLayout cardLayout = new CardLayout();
+    public UserPanel(Account currentAccount, List<Flight> lf, Map<String, Account> la) throws Exception {
         this.currentAccount = currentAccount;
         setLayout(null);
+        this.sidePanel = this.createSidePanel(new Rectangle(0, 0, 200, 680));
+        this.resultPanel = this.createResultPanel(new Rectangle(200, 0, 800, 680));
+        accountPanel = new AccountPanel(new Rectangle(200, 0, 800, 600), currentAccount);
+        ticketPanel = new TicketPanel(new Rectangle(200, 0, 800, 600));
+//        flightPanel = new FlightPanel(new Rectangle(200, 0, 800, 600), lf);
+        resultPanel.add("ap", accountPanel);
+        resultPanel.add("tp", ticketPanel);
+        resultPanel.add("fp", flightPanel);
+        add(sidePanel);
+        add(resultPanel);
+    }
+
+    public UserPanel(Account currentAccount, IModel model) throws Exception {
+        this.currentAccount = currentAccount;
+        this.model = model;
         this.sidePanel = this.createSidePanel(new Rectangle(0, 0, 200, 680));
         this.resultPanel = this.createResultPanel(new Rectangle(200, 0, 800, 680));
         add(sidePanel);
         add(resultPanel);
     }
+
     //Set Panel despite function that user choose and type of user
     public void setSidePanel(JPanel sidePanel) {
         this.sidePanel = sidePanel;
@@ -67,13 +91,25 @@ public abstract class UserPanel extends JPanel {
             btn.setBorder(null);
             panel.add(btn);
 
+            switch (i) {
+                case 1 -> {
+                    btn.addActionListener(e -> cardLayout.show(resultPanel, "fp"));
+                }
+                case 2 -> {
+                    btn.addActionListener(e -> cardLayout.show(resultPanel, "tp"));
+                }
+                case 3 -> {
+                    btn.addActionListener(e -> cardLayout.show(resultPanel, "ap"));
+                }
+            }
+
         }
 
 
         return panel;
     }
     public JPanel createResultPanel(Rectangle bounds) throws Exception {
-        JPanel panel = new JPanel(new CardLayout());
+        JPanel panel = new JPanel(cardLayout);
         panel.setBounds(bounds);
         CustomLabel label = new CustomLabel("Hãy chọn một tính năng để thực hiện");
         Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");

@@ -9,45 +9,60 @@ public class JDialogCreator {
     private JPanel panel;
     public static final int CONFIRM_DIALOG = 0;
     public static final int WARNING_DIALOG = 1;
+    public boolean status;
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public JDialogCreator(JPanel mainPanel, int type, ActionListener actionListener) {
         JFrame frame = new JFrame();
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
-        this.dialog = new JDialog(frame, "Thông báo", true);
         this.panel = new JPanel(new BorderLayout());
         this.panel.add(mainPanel, BorderLayout.CENTER);
         this.panel.add(createMainButton(type, actionListener), BorderLayout.SOUTH);
+        frame.add(panel);
+        this.dialog = new JDialog(frame, "Thông báo", true);
 
     }
 
     public JDialogCreator(String content, int type, ActionListener actionListener) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setSize(400, 400);
-        this.dialog = new JDialog(frame, "Thông báo", true);
         this.panel = new JPanel(new BorderLayout());
         this.panel.add(new JLabel(content), BorderLayout.CENTER);
         this.panel.add(createMainButton(type, actionListener), BorderLayout.SOUTH);
+        frame.add(panel);
+        this.dialog = new JDialog(frame, "Thông báo", true);
+
     }
 
     public JDialogCreator(JPanel mainPanel) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setSize(400, 400);
-        this.dialog = new JDialog(frame, "Thông báo", true);
         this.panel = new JPanel(new BorderLayout());
         this.panel.add(mainPanel, BorderLayout.CENTER);
         this.panel.add(createMainButton(0, null), BorderLayout.SOUTH);
+        frame.add(panel);
+        this.dialog = new JDialog(frame, "Thông báo", true);
     }
 
     public JDialogCreator(String content) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
-        this.dialog = new JDialog(frame, "Thông báo", true);
+        frame.setLocationRelativeTo(null);
         this.panel = new JPanel(new BorderLayout());
         this.panel.add(new JLabel(content), BorderLayout.CENTER);
         this.panel.add(createMainButton(0, null), BorderLayout.SOUTH);
+        frame.add(panel);
+        this.dialog = new JDialog(frame, "Thông báo", true);
     }
 
     JPanel createMainButton(int type, ActionListener actionListener) {
@@ -68,5 +83,9 @@ public class JDialogCreator {
             }
         }
         return panel;
+    }
+
+    public void setVisible(boolean b) {
+        dialog.setVisible(b);
     }
 }

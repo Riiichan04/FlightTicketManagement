@@ -3,6 +3,7 @@ package utilities;
 import model.*;
 
 import java.io.*;
+import java.util.Objects;
 
 public interface FileConverter {
     //Create new File and save it
@@ -15,7 +16,10 @@ public interface FileConverter {
             writer.println(flight.getRoute().getDeparture() + "|" + flight.getRoute().getArrival());
             writer.println(flight.getDate().getDay() + "|" + flight.getDate().getMonth() + "|" + flight.getDate().getYear());
             writer.println(flight.getPlane().getSeatCount());
-            flight.getListSeat().forEach((k, v) -> writer.println(k + "|" + v));
+            flight.getListSeat().forEach((k, v) -> {
+                if (v.equals("")) writer.println(k + "|null");
+                else writer.println(k + "|" + v);
+            });
             writer.close();
             return true;
         }
@@ -24,7 +28,7 @@ public interface FileConverter {
 
     static void convertAccountToTxt(Account account) throws Exception {
         FileWriter fw = new FileWriter("src/data/account.txt", true);
-        fw.write(account.getUsername() + "|" + account.getPassword() + "|" + account.getInfo().getId() + "|" + account.getInfo().getName() + "|" + account.getInfo().getPosition() + "|" + account.isChangedUsername() + "\n");
+        fw.write(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getId().trim() + "|" + account.getInfo().getName() + "|" + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername() + "\n");
         fw.close();
     }
 
@@ -88,7 +92,12 @@ public interface FileConverter {
             writer.println(flight.getRoute().getDeparture() + "|" + flight.getRoute().getArrival());
             writer.println(flight.getDate().getDay() + "|" + flight.getDate().getMonth() + "|" + flight.getDate().getYear());
             writer.println(flight.getPlane().getSeatCount());
-            flight.getListSeat().forEach((k, v) -> writer.println(k + "|" + v));
+            flight.getListSeat().forEach((k, v) -> {
+                if (v == null) {
+                    writer.println(k + "|null");
+                }
+                else writer.println(k + "|" + v);
+            });
             writer.close();
             return file.renameTo(temp);
         }

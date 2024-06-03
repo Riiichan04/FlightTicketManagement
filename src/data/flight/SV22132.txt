@@ -1,0 +1,23 @@
+SV22132
+5T221|Boeing787|JapanAirlines|140|000|true
+Haneda, Tokyo, NhậtBản|NộiBài, HàNội, ViệtNam
+5|6|2024
+14
+7B1|null
+7B2|null
+7B3|kj21
+7B4|null
+7B5|null
+7B6|null
+7B7|null
+7B8|kj11
+7B9|null
+7B10|null
+7B11|kj04
+7B12|null
+7B13|null
+7B14|null
+7B15|Kj20
+7B16|null
+7B17|null
+7B18|null

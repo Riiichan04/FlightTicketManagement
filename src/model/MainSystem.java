@@ -3,38 +3,83 @@ package model;
 import utilities.FileLoader;
 import utilities.JDialogCreator;
 
-import java.util.List;
+import java.util.*;
 
-public class MainSystem extends ListAccount {
-    private MainSystem instance;
-    private AccountSystem accountSystem;
-    private FlightSystem flightSystem;
-    private TicketSystem ticketSystem;
+public class MainSystem {
+    private static MainSystem instance;
+    private static AccountSystem accountSystem;
+    private static FlightSystem flightSystem;
+    private static TicketSystem ticketSystem;
     private Account currentAccount;
+    private ListAccount listAccount;
 
-    private MainSystem() {
+    private MainSystem()  {
     }
 
-    public MainSystem getInstance() {
+    public static MainSystem getInstance()  {
         if (instance == null) {
-            this.instance = new MainSystem();
-            this.accountSystem = new AccountSystem();
-            this.flightSystem = new FlightSystem();
-            this.ticketSystem = new TicketSystem();
+            instance = new MainSystem();
+            accountSystem = new AccountSystem();
+            flightSystem = new FlightSystem();
+            ticketSystem = new TicketSystem();
         }
         return instance;
     }
+    public AccountSystem getAccountSystem() {
+        return accountSystem;
+    }
+
+    public FlightSystem getFlightSystem() {
+        return flightSystem;
+    }
+
+    public TicketSystem getTicketSystem() {
+        return ticketSystem;
+    }
+
+    public Map<String, Account> getListAccount() {
+        return listAccount.getListAccount();
+    }
+
+    public Account getCurrentAccount() {
+        return currentAccount;
+    }
+    public void setListAccount(ListAccount la) {
+        this.listAccount = la;
+    }
+    public void setAccountSystem(AccountSystem accountSystem) {
+        MainSystem.accountSystem = accountSystem;
+    }
+
+    public void setFlightSystem(FlightSystem flightSystem) {
+        MainSystem.flightSystem = flightSystem;
+    }
+
+    public void setTicketSystem(TicketSystem ticketSystem) {
+        MainSystem.ticketSystem = ticketSystem;
+    }
+
+    public void setCurrentAccount(Account currentAccount) {
+        this.currentAccount = currentAccount;
+    }
 
     public JDialogCreator signIn(String username, String password) {
+        JDialogCreator dialog;
         if (this.getListAccount().get(username) == null) {
-            return new JDialogCreator("Tài khoản không tồn tại");
+            dialog = new JDialogCreator("Tài khoản không tồn tại");
+            dialog.setStatus(false);
         } else {
             Account account = this.getListAccount().get(username);
             if (account.password.equals(password)) {
                 this.currentAccount = account;
-                return new JDialogCreator("Đăng nhập thành công");
-            } else return new JDialogCreator("Mật khẩu bạn nhập không đúng");
+                dialog = new JDialogCreator("Đăng nhập thành công");
+                dialog.setStatus(true);
+            } else {
+                dialog = new JDialogCreator("Mật khẩu bạn nhập không đúng");
+                dialog.setStatus(false);
+            }
         }
+        return dialog;
     }
 
     public JDialogCreator createAccount(Account newAccount) throws Exception {
@@ -93,4 +138,9 @@ public class MainSystem extends ListAccount {
     public void displayTicket(String id) {
         this.ticketSystem.displayTicket(id);
     }
+
+    public List<Flight> getListFlight() {
+        return this.flightSystem.getListFlight();
+    }
+
 }

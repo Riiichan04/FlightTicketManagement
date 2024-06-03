@@ -3,7 +3,7 @@ package model;
 import utilities.FileConverter;
 
 public class ManagerAccount extends Account {
-    public ManagerAccount(String username, String password, Employee info, boolean isChangedUsername) {
+    public ManagerAccount(String username, String password, Employee info, boolean isChangedUsername)  {
         super(username, password, info, isChangedUsername);
     }
 

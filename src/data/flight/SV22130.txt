@@ -1,0 +1,19 @@
+SV22130
+5T421|AirBus|VietNamtravel|280|000|false
+Tân Sơn Nhất, HồChíMinh, ViệtNam|Incheon, Seoul, HànQuốc
+20|10|2024
+14
+A1|KH01
+A2|null
+A3|KH21
+A4|null
+A5|null
+A6|null
+A7|null
+A8|null
+A9|null
+A10|null
+A11|null
+A12|null
+A13|null
+A14|null

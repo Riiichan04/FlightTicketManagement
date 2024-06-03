@@ -13,6 +13,6 @@ public class BrandFilter extends Filter {
 
     @Override
     public List<Flight> execute(List<Flight> listFlight) {
-        return this.wrapper.execute(listFlight.stream().filter(obj -> obj.getPlane().getBrand().equals(this.brand)).toList());
+        return this.wrapper.execute(listFlight.stream().filter(obj -> obj.getPlane().getBrand().equals(this.brand) && !obj.getPlane().isLanding()).toList());
     }
 }

@@ -7,6 +7,9 @@ import utilities.JDialogCreator;
 import java.util.List;
 
 public class RemoveFlight extends FlightStrategy {
+    public RemoveFlight() throws Exception {
+    }
+
     @Override
     public JDialogCreator execute(Flight flight) throws Exception {
         if (FileConverter.deleteFlight(flight)) {

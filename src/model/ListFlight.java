@@ -7,7 +7,7 @@ import java.util.List;
 public class ListFlight {
     private List<Flight> listFlight;
 
-    void loadFlight() throws Exception {
+    public void loadFlight() throws Exception {
         this.listFlight = FileLoader.loadFlight();
     }
 

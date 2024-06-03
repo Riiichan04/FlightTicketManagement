@@ -1,0 +1,15 @@
+SV207031
+5T743|MilesM.52|AlaskaAirlines|170|000kg|true
+NộiBài, HàNội, ViệtNam|TedStevensAnchorage, Alaska, HoaKỳ
+3|6|2024
+10
+M1|null
+M2|ka88
+M3|ka18
+M4|ka82
+M5|ka19
+M6|na27
+M7|ka36
+M8|ka08
+M9|null
+M10|null

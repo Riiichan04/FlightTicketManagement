@@ -6,7 +6,7 @@ public class Plane {
     private String brand;
     private int seatCount;
     private double weight;
-    private boolean isLanding;
+    private boolean isLanding;  //False -> Flight will be taken off here. Else flight will be landed here
 
     public Plane(String id, String name, String brand, int seatCount, double weight, boolean isLanding) {
         super();

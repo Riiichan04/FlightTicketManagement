@@ -1,1 +1,11 @@
 root|1|null|null|null|false
+NieNieNe|21112004|Trần Thị Mỹ Tuyền|m001|manager|false
+DiNguThui|01022003|Nguyễn Hoàng Thanh Hải|s001|staff|true
+Trang27|04072716|Lâm Thị Gia Hân|s002|staff|true
+HieuThu2|18364926|Trần Minh Hiếu|s003|staff|false
+SonTung|17382530|Nguyễn Thanh Tùng|m004|manager|true
+jennie|74534245|Trần Nguyễn Thanh Hằng|s005|staff|true
+DavidNgo|37247352|Lê Trình Sơn|s006|staff|false
+LindaPham|63527422|Thanh Hoàng Phúc|s007|staff|true
+TranThanhTam|73427533|Trần Thanh Tâm|s008|staff|true
+NgFame|34236493|Nguyễn Kha Trọng Anh|s009|manager|true

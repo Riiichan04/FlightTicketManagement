@@ -6,7 +6,10 @@ import utilities.JDialogCreator;
 import java.util.List;
 
 public class UpdateFlight extends FlightStrategy{
-	@Override
+    public UpdateFlight() throws Exception {
+    }
+
+    @Override
 	public JDialogCreator execute(Flight flight) throws Exception {
         if (!FileConverter.convertFightToTxt(flight) || flight.getPlane().getSeatCount() != flight.getListSeat().size()) {
             return new JDialogCreator("Bạn cần nhập đủ thông tin");

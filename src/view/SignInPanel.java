@@ -1,25 +1,30 @@
 package view;
 
+import model.Model;
 import utilities.CustomLabel;
 import utilities.FontLoader;
+import utilities.JDialogCreator;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class SignInPanel extends JPanel {
-    public SignInPanel() throws Exception {
+    public SignInPanel(Model model) throws Exception {
         setLayout(null);
         setBackground(Color.DARK_GRAY);
-        add(new SignInForm());
+        add(new SignInForm(model));
     }
 
-    class SignInForm extends JPanel {
+    class SignInForm extends JPanel implements View, Observer {
         JPanel infoPanel;   //Trick: Tạo 1 JPanel lồng các JTextField và JLabel lại
         JTextField account;
         JPasswordField passwd;
         JButton button;
-        public SignInForm() throws Exception {
+        Model model;
+        public SignInForm(Model model) throws Exception {
+            this.model = model;
+            model.addObserver(this);
             Font robotoMedium = FontLoader.loadFont("src/asset/font/Roboto-Medium.ttf");
             Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");
 
@@ -51,6 +56,26 @@ public class SignInPanel extends JPanel {
 
             this.button.setFocusable(false);
             this.button.setBackground(new Color(0, 227, 114));
+            this.button.addActionListener(e -> {
+                if (model.signIn(this.account.getText(), this.account.getText())) {
+                    model.removeObserver(0);
+                    ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
+                    switch (model.getMainSystem().getCurrentAccount().getInfo().getPosition()) {
+                        case "staff" -> {
+                            try {
+                                new WorkFrame(new StaffPanel((model.getMainSystem().getCurrentAccount()), model.getMainSystem().getListFlight(), model.getListAccount()));
+                            } catch (Exception ex) {
+                                throw new RuntimeException(ex);
+                            }
+                        }
+                        case "manager" -> {
+                            try {
+                                new WorkFrame(new AdminPanel((model.getMainSystem().getCurrentAccount()), model.getMainSystem().getListFlight(), model.getListAccount()));
+                            } catch (Exception ex) { }
+                        }
+                    }
+                }
+            });
 
             add(Box.createRigidArea(new Dimension(450, 20)));
             add(title);
@@ -67,6 +92,11 @@ public class SignInPanel extends JPanel {
 
             add(this.infoPanel);
             add(button);
+        }
+
+        @Override
+        public void update(JDialogCreator dialog) {
+            dialog.setVisible(true);
         }
     }
 }

@@ -5,6 +5,9 @@ import utilities.FileLoader;
 import utilities.JDialogCreator;
 
 public class AddFlight extends FlightStrategy {
+    public AddFlight() {
+    }
+
     @Override
     public JDialogCreator execute(Flight flight) throws Exception {
         if (!FileConverter.convertFightToTxt(flight) || flight.getPlane().getSeatCount() != flight.getListSeat().size()) {

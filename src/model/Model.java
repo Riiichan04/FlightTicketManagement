@@ -1,6 +1,7 @@
 package model;
 
 import utilities.JDialogCreator;
+import view.AccountPanel;
 import view.Observer;
 
 import java.util.*;
@@ -8,6 +9,17 @@ import java.util.*;
 public class Model implements Observable {
     List<Observer> listObserver;
     MainSystem mainSystem;
+    public Model(MainSystem mainSystem) {
+        this.listObserver = new LinkedList<>();
+        this.mainSystem = mainSystem;
+    }
+    public List<Observer> getListObserver() {
+        return listObserver;
+    }
+
+    public MainSystem getMainSystem() {
+        return mainSystem;
+    }
 
     @Override
     public void addObserver(Observer ob) {
@@ -20,35 +32,58 @@ public class Model implements Observable {
     }
 
     @Override
+    public void removeObserver(int i) {
+        this.listObserver.remove(i);
+    }
+
+    @Override
     public void notifyObserver(JDialogCreator dialog) {
         for (Observer ob: listObserver) {
             ob.update(dialog);
         }
     }
-
-    public void signIn(String username, String password) {
-        notifyObserver(this.mainSystem.signIn(username, password));
+    public Map<String, Account> getListAccount() {
+        return this.mainSystem.getListAccount();
     }
-    public void createAccount(Account newAccount) throws Exception {
-        notifyObserver(this.mainSystem.createAccount(newAccount));
+    public boolean signIn(String username, String password) {
+        JDialogCreator dialog = this.mainSystem.signIn(username, password);
+        notifyObserver(dialog);
+        return dialog.status;
     }
-    public void deleteAccount(String username) throws Exception {
-        notifyObserver(this.mainSystem.deleteAccount(username));
+    public boolean createAccount(Account newAccount) throws Exception {
+        JDialogCreator dialog = this.mainSystem.createAccount(newAccount);
+        notifyObserver(dialog);
+        return dialog.status;
     }
-    public void updateUsername(String username) throws Exception {
-        notifyObserver(this.mainSystem.updateUsername(username));
+    public boolean deleteAccount(String username) throws Exception {
+        JDialogCreator dialog = this.mainSystem.deleteAccount(username);
+        notifyObserver(dialog);
+        return dialog.status;
     }
-    public void updatePassword(String passwd, String confirmPasswd) throws Exception {
-        notifyObserver(this.mainSystem.updatePassword(passwd, confirmPasswd));
+    public boolean updateUsername(String username) throws Exception {
+        JDialogCreator dialog = this.mainSystem.updateUsername(username);
+        notifyObserver(dialog);
+        return dialog.status;
     }
-    public void addFlight(Flight flight) throws Exception {
-        notifyObserver(this.mainSystem.addFlight(flight));
+    public boolean updatePassword(String passwd, String confirmPasswd) throws Exception {
+        JDialogCreator dialog = this.mainSystem.updatePassword(passwd, confirmPasswd);
+        notifyObserver(dialog);
+        return dialog.status;
     }
-    public void removeFlight(String flightId) throws Exception {
-        notifyObserver(this.mainSystem.removeFlight(flightId));
+    public boolean addFlight(Flight flight) throws Exception {
+        JDialogCreator dialog = this.mainSystem.addFlight(flight);
+        notifyObserver(dialog);
+        return dialog.status;
     }
-    public void updateFlight(Flight flight) throws Exception {
-        notifyObserver(this.mainSystem.updateFlight(flight));
+    public boolean removeFlight(String flightId) throws Exception {
+        JDialogCreator dialog = this.mainSystem.removeFlight(flightId);
+        notifyObserver(dialog);
+        return dialog.status;
+    }
+    public boolean updateFlight(Flight flight) throws Exception {
+        JDialogCreator dialog = this.mainSystem.updateFlight(flight);
+        notifyObserver(dialog);
+        return dialog.status;
     }
     public void displayFlight() {
         this.mainSystem.displayFlight();

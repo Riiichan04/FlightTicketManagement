@@ -1,6 +1,8 @@
 package view;
 
 import model.Employee;
+import model.ListAccount;
+import model.ListFlight;
 import model.ManagerAccount;
 import utilities.JDialogCreator;
 
@@ -25,6 +27,9 @@ public class WorkFrame extends JFrame implements View {
     }
 
     public static void main(String[] args) throws Exception {
-        new WorkFrame(new AdminPanel(new ManagerAccount("", "", new Employee("", "", ""), false)));
+        ManagerAccount account = new ManagerAccount("omg", "11111", new Employee("Nguyễn Văn D", "nv101", "staff"), false);
+        ListFlight lf = new ListFlight();
+        lf.loadFlight();
+        ListAccount la = new ListAccount();
     }
 }

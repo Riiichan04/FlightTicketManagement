@@ -87,7 +87,8 @@ public interface FileLoader {
         String line = "";
         while ((line = br.readLine()) != null) {
             String[] arrLine = line.split("\\|");
-            listSeat.put(arrLine[0], arrLine[1]);
+            if ((arrLine[1].equals("null"))) listSeat.put(arrLine[0], null);
+            else listSeat.put(arrLine[0], arrLine[1]);
         }
         flight.setListSeat(listSeat);
 

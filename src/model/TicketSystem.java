@@ -13,7 +13,6 @@ public class TicketSystem extends ListFlight {
     public int statistic() {
         return this.ticketDecorator.execute(this.getListFlight()).stream().mapToInt(obj -> Math.toIntExact(obj.getListSeat().values().stream().filter(Objects::nonNull).count())).sum();
     }
-
     public List<Flight> viewFlightIncluded() {
         return this.ticketDecorator.execute(getListFlight());
     }

@@ -7,7 +7,7 @@ import java.util.*;
 public class ListAccount {
     private Map<String, Account> listAccount;
 
-    void loadAccount() throws Exception {
+    public void loadAccount() throws Exception {
         this.listAccount = FileLoader.loadAccount();
     }
 
