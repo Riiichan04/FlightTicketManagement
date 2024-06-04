@@ -2,7 +2,7 @@ package model;
 
 import utilities.FileConverter;
 
-public abstract class Account extends ListAccount {
+public abstract class Account {
     protected String username;
     protected String password;
     protected Employee info;
@@ -41,16 +41,23 @@ public abstract class Account extends ListAccount {
         return isChangedUsername;
     }
 
-    public abstract boolean createAccount(Account account);
-    public abstract boolean deleteAccount(String username);
-    public boolean updateUsername(String username) {
-        if (this.isChangedUsername) return false;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public abstract boolean createAccount(Account account, ListAccount listAccount);
+    public abstract boolean deleteAccount(String username, ListAccount listAccount);
+    public boolean updateUsername(String username, ListAccount listAccount) {
+        if (this.isChangedUsername || this.getUsername().equals("root")) return false;
         else {
-            if (getListAccount().containsKey(username)) return false;
+            if (listAccount.getListAccount().containsKey(username)) return false;
             try {
+                listAccount.getListAccount().remove(this.username);
                 this.username = username;
                 this.isChangedUsername = true;
+                listAccount.getListAccount().put(this.username, this);
                 FileConverter.updateAccount(this);
+                System.out.println(this.getUsername());
                 return true;
             }
             catch (Exception e) {
@@ -58,12 +65,14 @@ public abstract class Account extends ListAccount {
             }
         }
     }
-    public boolean updatePassword(String password, String confirmPassword) {
+    public boolean updatePassword(String password, String confirmPassword, ListAccount listAccount) {
         if (!password.equals(confirmPassword)) return false;
         else {
             try {
                 this.password = password;
+                listAccount.getListAccount().get(this.username).setPassword(password);
                 FileConverter.updateAccount(this);
+                System.out.println(this.getPassword());
                 return true;
             }
             catch (Exception e) {

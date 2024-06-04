@@ -8,8 +8,8 @@ public class ManagerAccount extends Account {
     }
 
     @Override
-    public boolean createAccount(Account account) {
-        if (this.getListAccount().get(account.username) != null || findAccountByEmployee(account.info) != null) return false;
+    public boolean createAccount(Account account, ListAccount listAccount) {
+        if (listAccount.getListAccount().get(account.username) != null || listAccount.findAccountByEmployee(account.info) != null) return false;
         else {
             try {
                 FileConverter.convertAccountToTxt(account);
@@ -22,8 +22,8 @@ public class ManagerAccount extends Account {
     }
 
     @Override
-    public boolean deleteAccount(String username) {
-        if (this.getListAccount().get(username) == null) return false;
+    public boolean deleteAccount(String username, ListAccount listAccount) {
+        if (listAccount.getListAccount().get(username) == null || this.getUsername().equals(username)) return false;
         else {
             try {
                 FileConverter.deleteAccountInTxt(username);

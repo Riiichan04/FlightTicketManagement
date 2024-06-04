@@ -14,8 +14,8 @@ public class UpdatePassword implements AccountCommand{
     }
 
     @Override
-    public JDialogCreator execute() {
-        if (this.account.updatePassword(password, confirmPassword)) {
+    public JDialogCreator execute(ListAccount listAccount) {
+        if (this.account.updatePassword(password, confirmPassword, listAccount)) {
             return new JDialogCreator("Bạn đã cập nhật mật khẩu thành công");
         }
         else return new JDialogCreator("Mật khẩu và xác nhận mật khẩu không trùng khớp!");

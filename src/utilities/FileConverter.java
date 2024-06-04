@@ -5,6 +5,8 @@ import model.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 public interface FileConverter {
@@ -29,28 +31,30 @@ public interface FileConverter {
 
     static void convertAccountToTxt(Account account) throws Exception {
         FileWriter fw = new FileWriter("src/data/account.txt", true);
-        fw.write(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getId().trim() + "|" + account.getInfo().getName() + "|" + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername() + "\n");
+        fw.write(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getName() +"|" + account.getInfo().getId().trim() + "|"  + "|" + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername() + "\n");
         fw.close();
     }
 
     static void deleteAccountInTxt(String username) throws Exception {
         File input = new File("src/data/account.txt");
-        File temp = new File("src/data/tempAccount.txt");
         BufferedReader br = new BufferedReader(new FileReader(input));
-        PrintWriter pw = new PrintWriter(temp);
+        List<String> listLine = new LinkedList<>();
         String currentLine = "";
         while ((currentLine = br.readLine()) != null) {
+            System.out.println(currentLine);
             String inputUsername = currentLine.split("\\|")[0];
-            if (!inputUsername.equals(username)) pw.println(currentLine);
+            if(!inputUsername.equals(username)) listLine.add(currentLine);
+        }
+        PrintWriter pw = new PrintWriter(input);
+        for (String line : listLine) {
+            pw.println(line);
         }
         br.close();
         pw.close();
-        boolean success = temp.renameTo(input);
     }
 
     static boolean deleteFlight(Flight flight) {
         File f = new File("src/data/flight");
-        System.out.println(flight.getId());
         File[] listFile = f.listFiles((dir, name) -> name.startsWith(flight.getId()) && name.endsWith("txt"));
         System.out.println(Arrays.toString(listFile));
         if (listFile == null) return false;
@@ -66,29 +70,22 @@ public interface FileConverter {
     }
 
     static void updateAccount(Account account) throws Exception {
-        //Get input file and temp file
         File input = new File("src/data/account.txt");
-        File temp = new File("src/data/tempAccount.txt");
-        //Call new Reader and Writer
         BufferedReader br = new BufferedReader(new FileReader(input));
-        PrintWriter pw = new PrintWriter(temp);
+        List<String> listLine = new LinkedList<>();
         String currentLine = "";
-        //Read input file
         while ((currentLine = br.readLine()) != null) {
-            //Get employee id of account
-            String inputUsername = currentLine.split("\\|")[2];
-            //If equals with input account's employee id
-            if (inputUsername.equals(account.getInfo().getId())) {
-                //Write with new info
-                pw.println(account.getUsername() + "|" + account.getPassword() + "|" + account.getInfo().getId() + "|" + account.getInfo().getName() + "|" + account.getInfo().getPosition() + "|" + account.isChangedUsername());
-            }
-            //If not, just write current info
-            else pw.println(currentLine);
+            String inputUsername = currentLine.split("\\|")[3];
+            System.out.println(inputUsername);
+            if(!inputUsername.equals(account.getInfo().getId())) listLine.add(currentLine);
+            else listLine.add(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getName() +"|" + account.getInfo().getId().trim() + "|"  + "|" + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername());
+        }
+        PrintWriter pw = new PrintWriter(input);
+        for (String line : listLine) {
+            pw.println(line);
         }
         br.close();
         pw.close();
-        //Rename temp file to input file
-        boolean success = temp.renameTo(input);
     }
 
     static boolean updateFlight(Flight flight) throws Exception {

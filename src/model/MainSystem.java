@@ -72,24 +72,24 @@ public class MainSystem {
         return dialog;
     }
 
-    public JDialogCreator createAccount(Account newAccount) {
+    public JDialogCreator createAccount(Account newAccount, ListAccount listAccount) {
         accountSystem.setCreateAccount(new CreateAccount(this.currentAccount, newAccount));
-        return accountSystem.createAccount();
+        return accountSystem.createAccount(listAccount);
     }
 
-    public JDialogCreator deleteAccount(String username) {
+    public JDialogCreator deleteAccount(String username, ListAccount listAccount) {
         accountSystem.setDeleteAccount(new DeleteAccount(this.currentAccount, username));
-        return accountSystem.deleteAccount();
+        return accountSystem.deleteAccount(listAccount);
     }
 
-    public JDialogCreator updateUsername(String username) {
-        accountSystem.setDeleteAccount(new UpdateUsername(this.currentAccount, username));
-        return accountSystem.updateUsername();
+    public JDialogCreator updateUsername(String username, ListAccount listAccount) {
+        accountSystem.setUpdateUsername(new UpdateUsername(this.currentAccount, username));
+        return accountSystem.updateUsername(listAccount);
     }
 
-    public JDialogCreator updatePassword(String passwd, String confirmPasswd) {
+    public JDialogCreator updatePassword(String passwd, String confirmPasswd, ListAccount listAccount) {
         accountSystem.setUpdatePassword(new UpdatePassword(this.currentAccount, passwd, confirmPasswd));
-        return accountSystem.updatePassword();
+        return accountSystem.updatePassword(listAccount);
     }
 
     public JDialogCreator addFlight(Flight flight, ListFlight listFlight) {
@@ -98,9 +98,14 @@ public class MainSystem {
     }
 
     public JDialogCreator removeFlight(String id, ListFlight listFlight) {
-        flightSystem.setStrategy(new RemoveFlight());
-        Flight flight = FileLoader.findFlight(id);
-        return flightSystem.execute(flight, listFlight);
+        if (currentAccount instanceof StaffAccount) {
+            return new JDialogCreator("Bạn không có quyền hạn để thực hiện tính năng này!");
+        }
+        else {
+            flightSystem.setStrategy(new RemoveFlight());
+            Flight flight = FileLoader.findFlight(id);
+            return flightSystem.execute(flight, listFlight);
+        }
     }
 
     public JDialogCreator updateFlight(Flight flight, ListFlight listFlight) {

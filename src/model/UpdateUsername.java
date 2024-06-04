@@ -12,8 +12,9 @@ public class UpdateUsername implements AccountCommand {
     }
 
     @Override
-    public JDialogCreator execute() {
-        if (this.account.updateUsername(username)) {
+    public JDialogCreator execute(ListAccount listAccount) {
+        if (this.account.getUsername().equals("root")) return new JDialogCreator("Bạn không thể thay đổi tên tài khoản root");
+        else if (this.account.updateUsername(username, listAccount)) {
             return new JDialogCreator("Bạn đã thay đổi tên đăng nhập thành công!");
         }
         else if (this.account.isChangedUsername) return new JDialogCreator("Bạn chỉ có thể thay đổi tên đăng nhập một lần!");

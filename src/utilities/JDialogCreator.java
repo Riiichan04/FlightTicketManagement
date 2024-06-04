@@ -65,6 +65,23 @@ public class JDialogCreator {
         this.dialog.add(panel);
     }
 
+    public JDialogCreator(String content, Dimension dimension) {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        JTextArea textArea = new JTextArea(content);
+        textArea.setEditable(false);
+        textArea.setOpaque(false);
+        textArea.setBackground(new Color(0, 0, 0, 0));
+        this.panel = new JPanel(new BorderLayout());
+        this.panel.add(textArea, BorderLayout.CENTER);
+        this.panel.add(createMainButton(0, null), BorderLayout.SOUTH);
+        this.dialog = new JDialog(frame, "Thông báo", true);
+        this.dialog.setSize(dimension);
+        this.dialog.setLocationRelativeTo(null);
+        this.dialog.add(panel);
+    }
+
+
     JPanel createMainButton(int type, ActionListener actionListener) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         switch (type) {

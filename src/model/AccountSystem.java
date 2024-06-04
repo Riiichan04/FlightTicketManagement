@@ -17,20 +17,20 @@ public class AccountSystem {
         this.updatePassword = updatePassword;
     }
 
-    public JDialogCreator createAccount() {
-        return createAccount.execute();
+    public JDialogCreator createAccount(ListAccount listAccount) {
+        return createAccount.execute(listAccount);
     }
 
-    public JDialogCreator deleteAccount() {
-        return deleteAccount.execute();
+    public JDialogCreator deleteAccount(ListAccount listAccount) {
+        return deleteAccount.execute(listAccount);
     }
 
-    public JDialogCreator updateUsername() {
-        return updatePassword.execute();
+    public JDialogCreator updateUsername(ListAccount listAccount) {
+        return updateUsername.execute(listAccount);
     }
 
-    public JDialogCreator updatePassword() {
-        return updatePassword.execute();
+    public JDialogCreator updatePassword(ListAccount listAccount) {
+        return updatePassword.execute(listAccount);
     }
 
     public void setCreateAccount(AccountCommand createAccount) {

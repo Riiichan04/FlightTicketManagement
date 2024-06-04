@@ -17,7 +17,9 @@ public class ListAccount {
     }
 
     Account findAccountByEmployee(Employee employee) {
-        return this.listAccount.values().stream().filter(account -> account.info.equals(employee)).toList().getFirst();
+        List<Account> list = this.listAccount.values().stream().filter(account -> account.info.equals(employee)).toList();
+        if (list.size() > 0) return list.getFirst();
+        else return null;
     }
     public Map<String, Account> getListAccount() {
         return listAccount;

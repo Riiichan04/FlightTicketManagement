@@ -108,7 +108,6 @@ public interface FileLoader {
                 else listSeat.put(arrLine[0], arrLine[1]);
             }
             flight.setListSeat(listSeat);
-
             return flight;
         }
         catch (Exception e) {

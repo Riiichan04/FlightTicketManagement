@@ -47,24 +47,28 @@ public class Model implements Observable {
         notifyObserver(dialog);
         return dialog.status;
     }
-    public boolean createAccount(Account newAccount) {
-        JDialogCreator dialog = this.mainSystem.createAccount(newAccount);
+    public boolean createAccount(Account newAccount, ListAccount listAccount) {
+        JDialogCreator dialog = this.mainSystem.createAccount(newAccount, listAccount);
         notifyObserver(dialog);
+        dialog.setVisible(true);
         return dialog.status;
     }
-    public boolean deleteAccount(String username) {
-        JDialogCreator dialog = this.mainSystem.deleteAccount(username);
+    public boolean deleteAccount(String username, ListAccount listAccount) {
+        JDialogCreator dialog = this.mainSystem.deleteAccount(username, listAccount);
         notifyObserver(dialog);
+        dialog.setVisible(true);
         return dialog.status;
     }
-    public boolean updateUsername(String username) {
-        JDialogCreator dialog = this.mainSystem.updateUsername(username);
+    public boolean updateUsername(String username, ListAccount listAccount) {
+        JDialogCreator dialog = this.mainSystem.updateUsername(username, listAccount);
         notifyObserver(dialog);
+        dialog.setVisible(true);
         return dialog.status;
     }
-    public boolean updatePassword(String passwd, String confirmPasswd) {
-        JDialogCreator dialog = this.mainSystem.updatePassword(passwd, confirmPasswd);
+    public boolean updatePassword(String passwd, String confirmPasswd, ListAccount listAccount) {
+        JDialogCreator dialog = this.mainSystem.updatePassword(passwd, confirmPasswd, listAccount);
         notifyObserver(dialog);
+        dialog.setVisible(true);
         return dialog.status;
     }
     public boolean addFlight(Flight flight, ListFlight listFlight) {

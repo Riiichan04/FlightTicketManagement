@@ -6,12 +6,12 @@ public class StaffAccount extends Account{
     }
 
     @Override
-    public boolean createAccount(Account account) {
+    public boolean createAccount(Account account, ListAccount listAccount) {
         return false;
     }
 
     @Override
-    public boolean deleteAccount(String username) {
+    public boolean deleteAccount(String username, ListAccount listAccount) {
         return false;
     }
 }

@@ -64,7 +64,7 @@ public class SignInPanel extends JPanel {
                 if (model.signIn(this.account.getText(), new String(this.passwd.getPassword()), listAccount)) {
                     model.removeObserver(0);
                     ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
-                    model.addObserver(new WorkFrame(new UserPanel((model.getMainSystem().getCurrentAccount()), model, listFlight)));
+                    model.addObserver(new WorkFrame(new UserPanel((model.getMainSystem().getCurrentAccount()), model, listFlight, listAccount)));
                 }
             });
 

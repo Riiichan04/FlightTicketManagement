@@ -46,7 +46,8 @@ public class FlightPanel extends JPanel {
             if (i == 6 || i == 7) table.getColumnModel().getColumn(i).setMinWidth(200);
         }
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        String[] listTitle = {"Thêm chuyến bay", "Chỉnh sửa chuyến bay", "Xóa chuyến bay"};
+//        String[] listTitle = {"Thêm chuyến bay", "Chỉnh sửa chuyến bay", "Xóa chuyến bay"};
+        String[] listTitle = {"Thêm chuyến bay", "Chỉnh sửa chuyến bay"};
         this.listBtn = new JButton[listTitle.length];
         for (int i = 0; i < listBtn.length; i++) {
             listBtn[i] = new JButton(listTitle[i]);
@@ -57,7 +58,7 @@ public class FlightPanel extends JPanel {
         }
         listBtn[0].addActionListener(addFlight(listFlight));
         listBtn[1].addActionListener(updateFlight(listFlight));
-        listBtn[2].addActionListener(removeFlight(listFlight));
+//        listBtn[2].addActionListener(removeFlight(listFlight));
         add(scrollPane);
         add(btnPanel);
     }

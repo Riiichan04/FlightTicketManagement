@@ -12,8 +12,8 @@ public class DeleteAccount implements AccountCommand {
     }
 
     @Override
-    public JDialogCreator execute() {
-        if (this.account.deleteAccount(username)) {
+    public JDialogCreator execute(ListAccount listAccount) {
+        if (this.account.deleteAccount(username, listAccount)) {
             return new JDialogCreator("Xóa tài khoản thành công!");
         }
         else if (this.account instanceof ManagerAccount) {

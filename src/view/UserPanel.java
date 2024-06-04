@@ -20,13 +20,13 @@ public class UserPanel extends JPanel {
     protected TicketPanel ticketPanel;
     protected FlightPanel flightPanel;
     protected CardLayout cardLayout = new CardLayout();
-    public UserPanel(Account currentAccount, Model model, ListFlight lf) {
+    public UserPanel(Account currentAccount, Model model, ListFlight lf, ListAccount la) {
         this.currentAccount = currentAccount;
         this.model = model;
         setLayout(null);
         this.sidePanel = this.createSidePanel(new Rectangle(0, 0, 200, 680));
         this.resultPanel = this.createResultPanel(new Rectangle(200, 0, 800, 680));
-        accountPanel = new AccountPanel(new Rectangle(200, 0, 800, 600), currentAccount);
+        accountPanel = new AccountPanel(new Rectangle(200, 0, 800, 600), currentAccount, la, model);
         ticketPanel = new TicketPanel(new Rectangle(200, 0, 800, 600), lf, model);
         flightPanel = new FlightPanel(new Rectangle(200, 0, 800, 600), lf, model);
         resultPanel.add("ap", accountPanel);
@@ -51,18 +51,18 @@ public class UserPanel extends JPanel {
         panel.setBounds(bounds);
         panel.setBorder(new MatteBorder(0, 0, 0, 1, Color.BLACK));
 
-        java.util.List<String> listString = new ArrayList<>();
+        List<String> listString = new ArrayList<>();
         listString.add("Xin chào, " + this.currentAccount.getUsername());
         listString.add("Quản lý chuyến bay");
         listString.add("Quản lý thông tin vé");
         listString.add("Quản lý tài khoản");
 
-        java.util.List<JButton> listButton = new ArrayList<>();
+        List<JButton> listButton = new ArrayList<>();
 
         Font robotoMedium = FontLoader.loadFont("src/asset/font/Roboto-Medium.ttf");
         Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");
 
-        java.util.List<JPanel> listPanel = List.of(new JPanel(), new JPanel(), new JPanel());
+        List<JPanel> listPanel = List.of(new JPanel(), new JPanel(), new JPanel());
 
         CustomLabel titleLabel = new CustomLabel(listString.get(0));
         titleLabel.setCustomFont(robotoLight, 15f);
@@ -87,8 +87,22 @@ public class UserPanel extends JPanel {
                 case 3 -> btn.addActionListener(e -> cardLayout.show(resultPanel, "ap"));
             }
         }
-
-
+        JButton signOut = new JButton("Đăng xuất");
+        signOut.setHorizontalAlignment(SwingConstants.LEFT);
+        signOut.setFont(FontLoader.loadCustomizeFont(robotoMedium, 17f));
+        signOut.setPreferredSize(new Dimension(190, 30));
+        signOut.setBackground(new Color(0, 0, 0, 0));
+        signOut.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        signOut.setFocusable(false);
+        signOut.setOpaque(false);
+        signOut.setBorder(null);
+        signOut.addActionListener(e -> {
+           JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+           frame.dispose();
+           System.exit(0);
+        });
+        panel.add(Box.createRigidArea(new Dimension(190, 500)));
+        panel.add(signOut);
         return panel;
     }
     public JPanel createResultPanel(Rectangle bounds) {
