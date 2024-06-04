@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 public class TicketPanel extends JPanel {
     JTabbedPane tabbedPane;
-    Model model;
+    IModel model;
     JScrollPane resultPane;
     JTextField[] topFilter;
     JTextField[] botFilter;
@@ -24,7 +24,7 @@ public class TicketPanel extends JPanel {
     JPanel viewTab;
     JTextField viewInput;
     JTable viewTable;
-    public TicketPanel(Rectangle r, ListFlight listFlight, Model model) {
+    public TicketPanel(Rectangle r, ListFlight listFlight, IModel model) {
         setBounds(r);
         this.tabbedPane = createTabbedPane(listFlight);
         this.model = model;
@@ -52,7 +52,7 @@ public class TicketPanel extends JPanel {
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btn.setFocusable(false);
         btn.addActionListener(statistic(listFlight));
-
+        btn.setBackground(new Color(0, 227, 114));
 
         statisticTab.add(topSubPanel, BorderLayout.NORTH);
         statisticTab.add(Box.createRigidArea(new Dimension(50, 20)), BorderLayout.CENTER);
@@ -75,6 +75,7 @@ public class TicketPanel extends JPanel {
         sbtn.setFont(FontLoader.loadCustomizeFont(robotoMedium, 15f));
         sbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         sbtn.setFocusable(false);
+        sbtn.setBackground(new Color(0, 227, 114));
         sbtn.addActionListener(e -> {
             //Thực hiện tính năng, lấy thông tin truyền vào data
             this.data = model.displayTicket(viewInput.getText(), listFlight);

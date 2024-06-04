@@ -2,7 +2,7 @@ package view;
 
 import model.ListAccount;
 import model.ListFlight;
-import model.Model;
+import model.IModel;
 import utilities.CustomLabel;
 import utilities.FontLoader;
 import utilities.JDialogCreator;
@@ -13,9 +13,9 @@ import java.awt.*;
 import java.util.Arrays;
 
 public class SignInPanel extends JPanel {
-    public SignInPanel(Model model, ListAccount listAccount, ListFlight listFlight) throws Exception {
+    public SignInPanel(IModel model, ListAccount listAccount, ListFlight listFlight) throws Exception {
         setLayout(null);
-        setBackground(Color.DARK_GRAY);
+        setBackground(new Color(197, 197, 197));
         add(new SignInForm(model, listAccount, listFlight));
     }
 
@@ -24,9 +24,9 @@ public class SignInPanel extends JPanel {
         JTextField account;
         JPasswordField passwd;
         JButton button;
-        Model model;
+        IModel model;
 
-        public SignInForm(Model model, ListAccount listAccount, ListFlight listFlight) {
+        public SignInForm(IModel model, ListAccount listAccount, ListFlight listFlight) {
             this.model = model;
             model.addObserver(this);
             Font robotoMedium = FontLoader.loadFont("src/asset/font/Roboto-Medium.ttf");
@@ -34,7 +34,6 @@ public class SignInPanel extends JPanel {
 
             setLayout(new FlowLayout());
             setBounds(275, 150, 450, 300); //Trick: Dùng FlowLayout + setPreferredSize để đẩy JButton xuống chính giữa ở dưới infoPanel và đẩy title ở chính giữa bên trên infoPanel
-//        setBackground(new Color(246, 203, 203));
 
             this.infoPanel = new JPanel();
             infoPanel.setLayout(new BoxLayout(this.infoPanel, BoxLayout.Y_AXIS));

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class UserPanel extends JPanel {
-    protected Model model;
+    protected IModel model;
     protected Account currentAccount;
     protected JPanel sidePanel;
     protected JPanel resultPanel;
@@ -20,7 +20,7 @@ public class UserPanel extends JPanel {
     protected TicketPanel ticketPanel;
     protected FlightPanel flightPanel;
     protected CardLayout cardLayout = new CardLayout();
-    public UserPanel(Account currentAccount, Model model, ListFlight lf, ListAccount la) {
+    public UserPanel(Account currentAccount, IModel model, ListFlight lf, ListAccount la) {
         this.currentAccount = currentAccount;
         this.model = model;
         setLayout(null);

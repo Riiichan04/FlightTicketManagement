@@ -31,7 +31,7 @@ public interface FileConverter {
 
     static void convertAccountToTxt(Account account) throws Exception {
         FileWriter fw = new FileWriter("src/data/account.txt", true);
-        fw.write(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getName() +"|" + account.getInfo().getId().trim() + "|"  + "|" + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername() + "\n");
+        fw.write(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getName() +"|" + account.getInfo().getId().trim() + "|"  + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername() + "\n");
         fw.close();
     }
 
@@ -41,7 +41,6 @@ public interface FileConverter {
         List<String> listLine = new LinkedList<>();
         String currentLine = "";
         while ((currentLine = br.readLine()) != null) {
-            System.out.println(currentLine);
             String inputUsername = currentLine.split("\\|")[0];
             if(!inputUsername.equals(username)) listLine.add(currentLine);
         }
@@ -56,7 +55,6 @@ public interface FileConverter {
     static boolean deleteFlight(Flight flight) {
         File f = new File("src/data/flight");
         File[] listFile = f.listFiles((dir, name) -> name.startsWith(flight.getId()) && name.endsWith("txt"));
-        System.out.println(Arrays.toString(listFile));
         if (listFile == null) return false;
         else {
             try {
@@ -76,7 +74,6 @@ public interface FileConverter {
         String currentLine = "";
         while ((currentLine = br.readLine()) != null) {
             String inputUsername = currentLine.split("\\|")[3];
-            System.out.println(inputUsername);
             if(!inputUsername.equals(account.getInfo().getId())) listLine.add(currentLine);
             else listLine.add(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getName() +"|" + account.getInfo().getId().trim() + "|"  + "|" + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername());
         }

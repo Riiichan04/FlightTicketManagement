@@ -6,7 +6,7 @@ import view.Observer;
 
 import java.util.*;
 
-public class Model implements Observable, IModel {
+public class Model implements IModel {
     List<Observer> listObserver;
     MainSystem mainSystem;
     public Model(MainSystem mainSystem) {
@@ -52,48 +52,41 @@ public class Model implements Observable, IModel {
     public boolean createAccount(Account newAccount, ListAccount listAccount) {
         JDialogCreator dialog = this.mainSystem.createAccount(newAccount, listAccount);
         notifyObserver(dialog);
-        dialog.setVisible(true);
         return dialog.status;
     }
     @Override
     public boolean deleteAccount(String username, ListAccount listAccount) {
         JDialogCreator dialog = this.mainSystem.deleteAccount(username, listAccount);
         notifyObserver(dialog);
-        dialog.setVisible(true);
         return dialog.status;
     }
     @Override
     public boolean updateUsername(String username, ListAccount listAccount) {
         JDialogCreator dialog = this.mainSystem.updateUsername(username, listAccount);
         notifyObserver(dialog);
-        dialog.setVisible(true);
         return dialog.status;
     }
     @Override
     public boolean updatePassword(String currentPassword, String passwd, String confirmPasswd, ListAccount listAccount) {
         JDialogCreator dialog = this.mainSystem.updatePassword(currentPassword, passwd, confirmPasswd, listAccount);
         notifyObserver(dialog);
-        dialog.setVisible(true);
         return dialog.status;
     }
     @Override
     public boolean addFlight(Flight flight, ListFlight listFlight) {
         JDialogCreator dialog = this.mainSystem.addFlight(flight, listFlight);
-        dialog.setVisible(true);
         notifyObserver(dialog);
         return dialog.status;
     }
     @Override
     public boolean removeFlight(String flightId, ListFlight listFlight) {
         JDialogCreator dialog = this.mainSystem.removeFlight(flightId, listFlight);
-        dialog.setVisible(true);
         notifyObserver(dialog);
         return dialog.status;
     }
     @Override
     public boolean updateFlight(Flight flight, ListFlight listFlight) {
         JDialogCreator dialog = this.mainSystem.updateFlight(flight, listFlight);
-        dialog.setVisible(true);
         notifyObserver(dialog);
         return dialog.status;
     }
@@ -103,7 +96,6 @@ public class Model implements Observable, IModel {
     }
     public void statistic(TicketDecorator decorator, ListFlight listFlight) {
         JDialogCreator dialog = this.mainSystem.statistic(decorator, listFlight);
-        dialog.setVisible(true);
         notifyObserver(dialog);
     }
     public void displayFlightStatistic(TicketDecorator decorator, ListFlight listFlight) {

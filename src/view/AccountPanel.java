@@ -13,10 +13,10 @@ import javax.swing.*;
 
 public class AccountPanel extends JPanel {
     JButton[] listButton = new JButton[4];
-    Model model;
+    IModel model;
     Account currentAccount;
 
-    public AccountPanel(Rectangle bounds, Account currentAccount, ListAccount listAccount, Model model) {
+    public AccountPanel(Rectangle bounds, Account currentAccount, ListAccount listAccount, IModel model) {
         this.model = model;
 //		setBounds(bounds);
         JPanel panel = new JPanel();
@@ -41,6 +41,7 @@ public class AccountPanel extends JPanel {
             listButton[i].setFont(FontLoader.loadCustomizeFont(robotoMedium, 15f));
             listButton[i].setPreferredSize(new Dimension(190, 30));
             listButton[i].setFocusable(false);
+            listButton[i].setBackground(new Color(0, 227, 114));
             btnPanel.add(listButton[i]);
         }
         listButton[0].addActionListener(addAccount(listAccount));

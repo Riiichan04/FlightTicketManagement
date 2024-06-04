@@ -4,6 +4,7 @@ import model.ListAccount;
 import model.ListFlight;
 import model.MainSystem;
 import model.Model;
+import model.IModel;
 import view.SignInFrame;
 import view.View;
 
@@ -22,7 +23,7 @@ public class Controller implements IController{
         ListFlight lf = new ListFlight();
         lf.loadFlight();
         MainSystem ms = MainSystem.getInstance();
-        Model model = new Model(ms);
+        IModel model = new Model(ms);
         SignInFrame view = new SignInFrame(model, la, lf);
     }
 }

@@ -15,10 +15,11 @@ public class CreateAccount implements AccountCommand {
 
     @Override
     public JDialogCreator execute(ListAccount listAccount){
+        System.out.println(newAccount.getUsername());
         if (this.account.createAccount(newAccount, listAccount)) {
             return new JDialogCreator("Cấp tài khoản thành công! \nTài khoản mới có username mặc định là: "
-                    + newAccount.info.getPosition() + newAccount.info.getId().substring(1) +
-                    "\nTài khoản có mật khẩu là:" + newAccount.info.getId()
+                    + newAccount.getUsername() +
+                    "\nTài khoản có mật khẩu là:" + newAccount.getPassword()
                     + "\nBạn có một lần đổi tên tài khoản và được thay đổi mật khẩu với số lần tùy ý"
             , new Dimension(600, 150));
         }

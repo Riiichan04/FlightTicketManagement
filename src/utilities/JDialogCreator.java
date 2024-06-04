@@ -32,7 +32,9 @@ public class JDialogCreator {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.panel = new JPanel(new BorderLayout());
-        this.panel.add(new JLabel(content), BorderLayout.CENTER);
+        JPanel subPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        subPanel.add(new JLabel(content));
+        this.panel.add(subPanel, BorderLayout.CENTER);
         this.panel.add(createMainButton(type, actionListener), BorderLayout.SOUTH);
         this.dialog = new JDialog(frame, "Thông báo", true);
         this.dialog.setLocationRelativeTo(null);
@@ -57,7 +59,9 @@ public class JDialogCreator {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.panel = new JPanel(new BorderLayout());
-        this.panel.add(new JLabel(content), BorderLayout.CENTER);
+        JPanel subPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        subPanel.add(new JLabel(content));
+        this.panel.add(subPanel, BorderLayout.CENTER);
         this.panel.add(createMainButton(0, null), BorderLayout.SOUTH);
         this.dialog = new JDialog(frame, "Thông báo", true);
         this.dialog.setSize(300, 100);

@@ -21,8 +21,8 @@ public class FlightPanel extends JPanel {
     JButton[] listBtn;
     Object[][] data;
     String[] listColumn = {"Mã chuyến bay", "Số hiệu máy bay", "Tên máy bay", "Hãng bay", "Số lượng ghế", "Trọng lượng", "Nơi đi", "Nơi đến", "Ngày cất cánh"};
-    Model model;
-    public FlightPanel(Rectangle bounds, ListFlight listFlight, Model model) {
+    IModel model;
+    public FlightPanel(Rectangle bounds, ListFlight listFlight, IModel model) {
         this.model = model;
         Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");
         Font robotoMedium = FontLoader.loadFont("src/asset/font/Roboto-Medium.ttf");
@@ -54,6 +54,7 @@ public class FlightPanel extends JPanel {
             listBtn[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
             listBtn[i].setFont(FontLoader.loadCustomizeFont(robotoMedium, 15f));
             listBtn[i].setFocusable(false);
+            listBtn[i].setBackground(new Color(0, 227, 114));
             btnPanel.add(listBtn[i]);
         }
         listBtn[0].addActionListener(addFlight(listFlight));

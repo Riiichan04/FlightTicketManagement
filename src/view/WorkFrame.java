@@ -23,6 +23,6 @@ public class WorkFrame extends JFrame implements View {
 
     @Override
     public void update(JDialogCreator dialog) {
-
+        dialog.setVisible(true);
     }
 }
