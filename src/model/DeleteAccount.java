@@ -12,7 +12,7 @@ public class DeleteAccount implements AccountCommand {
     }
 
     @Override
-    public JDialogCreator execute() throws Exception {
+    public JDialogCreator execute() {
         if (this.account.deleteAccount(username)) {
             return new JDialogCreator("Xóa tài khoản thành công!");
         }

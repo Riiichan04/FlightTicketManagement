@@ -72,4 +72,9 @@ public class Plane {
 		Plane plane = (Plane) obj;
 		return this.id.equals(plane.id) && this.name.equals(plane.name) && this.isLanding == plane.isLanding;
 	}
+
+    @Override
+    public String toString() {
+        return this.id + this.name + this.brand + this.seatCount + "" + this.weight;
+    }
 }

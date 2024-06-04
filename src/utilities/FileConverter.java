@@ -3,6 +3,8 @@ package utilities;
 import model.*;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.Objects;
 
 public interface FileConverter {
@@ -17,8 +19,7 @@ public interface FileConverter {
             writer.println(flight.getDate().getDay() + "|" + flight.getDate().getMonth() + "|" + flight.getDate().getYear());
             writer.println(flight.getPlane().getSeatCount());
             flight.getListSeat().forEach((k, v) -> {
-                if (v.equals("")) writer.println(k + "|null");
-                else writer.println(k + "|" + v);
+                writer.println(k + "|" + v);
             });
             writer.close();
             return true;
@@ -49,10 +50,18 @@ public interface FileConverter {
 
     static boolean deleteFlight(Flight flight) {
         File f = new File("src/data/flight");
+        System.out.println(flight.getId());
         File[] listFile = f.listFiles((dir, name) -> name.startsWith(flight.getId()) && name.endsWith("txt"));
+        System.out.println(Arrays.toString(listFile));
         if (listFile == null) return false;
         else {
-            return listFile[0].delete();
+            try {
+                if (!listFile[0].createNewFile()) return listFile[0].delete();
+                else return false;
+            }
+            catch (Exception e) {
+                return false;
+            }
         }
     }
 
@@ -85,7 +94,8 @@ public interface FileConverter {
     static boolean updateFlight(Flight flight) throws Exception {
         File file = new File("src/data/flight/" + flight.getId() + ".txt");
         if (!file.createNewFile()) {
-            File temp = new File("src/data/flight/temp" + flight.getId() + ".txt");
+//            file.delete();
+            File temp = new File("src/data/flight/" + flight.getId() + ".txt");
             PrintWriter writer = new PrintWriter(temp);
             writer.println(flight.getId());
             writer.println(flight.getPlane().getId() + "|" + flight.getPlane().getName() + "|" + flight.getPlane().getBrand() + "|" + flight.getPlane().getWeight() + "|" + flight.getPlane().isLanding());
@@ -99,7 +109,7 @@ public interface FileConverter {
                 else writer.println(k + "|" + v);
             });
             writer.close();
-            return file.renameTo(temp);
+            return true;
         }
         else return false;
     }

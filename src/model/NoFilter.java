@@ -2,12 +2,7 @@ package model;
 
 import java.util.List;
 
-public class NoFilter extends Filter {
-
-    public NoFilter(TicketDecorator wrapper) {
-        super(wrapper);
-    }
-
+public class NoFilter implements TicketDecorator {
     @Override
     public List<Flight> execute(List<Flight> listFlight) {
         return listFlight;

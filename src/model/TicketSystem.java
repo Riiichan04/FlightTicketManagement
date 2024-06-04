@@ -4,29 +4,25 @@ import javax.swing.*;
 import java.util.List;
 import java.util.Objects;
 
-public class TicketSystem extends ListFlight {
+public class TicketSystem {
     private TicketDecorator ticketDecorator;
     public TicketSystem() { }
     public void setDecorator(TicketDecorator ticketDecorator) {
         this.ticketDecorator = ticketDecorator;
     }
-    public int statistic() {
-        return this.ticketDecorator.execute(this.getListFlight()).stream().mapToInt(obj -> Math.toIntExact(obj.getListSeat().values().stream().filter(Objects::nonNull).count())).sum();
+    public int statistic(ListFlight listFlight) {
+        return this.ticketDecorator.execute(listFlight.getListFlight()).stream().mapToInt(obj -> Math.toIntExact(obj.getListSeat().values().stream().filter(Objects::nonNull).count())).sum();
     }
-    public List<Flight> viewFlightIncluded() {
-        return this.ticketDecorator.execute(getListFlight());
+    public List<Flight> viewFlightIncluded(ListFlight listFlight) {
+        return this.ticketDecorator.execute(listFlight.getListFlight());
     }
 
-    public JScrollPane displayTicket(String id) {
-        Flight flight = this.getListFlight().stream().filter(obj -> obj.getId().equals(id)).toList().getFirst();
-        JScrollPane pane = new JScrollPane();
-        JTextArea result = new JTextArea();
-        result.setEditable(false);
-        result.setOpaque(false);
-        StringBuilder info = new StringBuilder();
-        flight.getListSeat().forEach((k, v) -> info.append("Mã ghế: ").append(k).append(" - Mã khách hàng: ").append(v).append("\n"));
-        result.setText(String.valueOf(info));
-        pane.setViewportView(result);
-        return pane;
+    public String[][] displayTicket(String id, ListFlight listFlight) {
+        List<Flight> list = listFlight.getListFlight().stream().filter(obj -> obj.getId().equals(id)).toList();
+        if (list.size() > 0) {
+            Flight flight = list.getFirst();
+            return flight.getListSeat().entrySet().stream().map(obj -> new String[]{obj.getKey(), obj.getValue()}).toArray(String[][]::new);
+        }
+        else return null;
     }
 }

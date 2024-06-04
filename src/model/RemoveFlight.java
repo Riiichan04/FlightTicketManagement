@@ -7,15 +7,20 @@ import utilities.JDialogCreator;
 import java.util.List;
 
 public class RemoveFlight extends FlightStrategy {
-    public RemoveFlight() throws Exception {
+    public RemoveFlight() {
     }
 
     @Override
-    public JDialogCreator execute(Flight flight) throws Exception {
+    public JDialogCreator execute(Flight flight, ListFlight listFlight) {
+        JDialogCreator result;
         if (FileConverter.deleteFlight(flight)) {
-            return new JDialogCreator("Xóa chuyến bay thành công");
+            listFlight.getListFlight().remove(flight);
+            result = new JDialogCreator("Xóa chuyến bay thành công");
+            result.setStatus(true);
+            return result;
         } else {
-            return new JDialogCreator("Không tìm thấy chuyến bay cần xóa");
+            result = new JDialogCreator("Không tìm thấy chuyến bay cần xóa");
+            return result;
         }
     }
 }

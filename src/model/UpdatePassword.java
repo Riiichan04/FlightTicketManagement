@@ -14,7 +14,7 @@ public class UpdatePassword implements AccountCommand{
     }
 
     @Override
-    public JDialogCreator execute() throws Exception {
+    public JDialogCreator execute() {
         if (this.account.updatePassword(password, confirmPassword)) {
             return new JDialogCreator("Bạn đã cập nhật mật khẩu thành công");
         }

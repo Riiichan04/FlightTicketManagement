@@ -41,24 +41,34 @@ public abstract class Account extends ListAccount {
         return isChangedUsername;
     }
 
-    public abstract boolean createAccount(Account account) throws Exception;
-    public abstract boolean deleteAccount(String username) throws Exception;
-    public boolean updateUsername(String username) throws Exception {
+    public abstract boolean createAccount(Account account);
+    public abstract boolean deleteAccount(String username);
+    public boolean updateUsername(String username) {
         if (this.isChangedUsername) return false;
         else {
             if (getListAccount().containsKey(username)) return false;
-            this.username = username;
-            this.isChangedUsername = true;
-            FileConverter.updateAccount(this);
-            return true;
+            try {
+                this.username = username;
+                this.isChangedUsername = true;
+                FileConverter.updateAccount(this);
+                return true;
+            }
+            catch (Exception e) {
+                return false;
+            }
         }
     }
-    public boolean updatePassword(String password, String confirmPassword) throws Exception {
+    public boolean updatePassword(String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) return false;
         else {
-            this.password = password;
-            FileConverter.updateAccount(this);
-            return true;
+            try {
+                this.password = password;
+                FileConverter.updateAccount(this);
+                return true;
+            }
+            catch (Exception e) {
+                return false;
+            }
         }
 
     }

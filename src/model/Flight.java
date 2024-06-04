@@ -10,7 +10,8 @@ public class Flight {
     Map<String, String> listSeat;
     Date date;
 
-    public Flight() {}
+    public Flight() {
+    }
 
     public Flight(String id, Plane plane, Route route, Map<String, String> listSeat, Date date) {
         this.id = id;
@@ -66,5 +67,10 @@ public class Flight {
         if (obj == null || !this.getClass().equals(obj.getClass())) return false;
         Flight other = (Flight) obj;
         return this.id.equals(other.id) && this.plane.equals(other.plane) && this.route.equals(other.route);
-     }
+    }
+
+    @Override
+    public String toString() {
+        return this.id + this.plane.toString() + this.route.toString() + date.toString();
+    }
 }

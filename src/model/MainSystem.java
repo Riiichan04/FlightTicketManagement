@@ -11,8 +11,6 @@ public class MainSystem {
     private static FlightSystem flightSystem;
     private static TicketSystem ticketSystem;
     private Account currentAccount;
-    private ListAccount listAccount;
-
     private MainSystem()  {
     }
 
@@ -36,16 +34,8 @@ public class MainSystem {
     public TicketSystem getTicketSystem() {
         return ticketSystem;
     }
-
-    public Map<String, Account> getListAccount() {
-        return listAccount.getListAccount();
-    }
-
     public Account getCurrentAccount() {
         return currentAccount;
-    }
-    public void setListAccount(ListAccount la) {
-        this.listAccount = la;
     }
     public void setAccountSystem(AccountSystem accountSystem) {
         MainSystem.accountSystem = accountSystem;
@@ -63,13 +53,13 @@ public class MainSystem {
         this.currentAccount = currentAccount;
     }
 
-    public JDialogCreator signIn(String username, String password) {
+    public JDialogCreator signIn(String username, String password, ListAccount listAccount) {
         JDialogCreator dialog;
-        if (this.getListAccount().get(username) == null) {
+        if (listAccount.getListAccount().get(username) == null) {
             dialog = new JDialogCreator("Tài khoản không tồn tại");
             dialog.setStatus(false);
         } else {
-            Account account = this.getListAccount().get(username);
+            Account account = listAccount.getListAccount().get(username);
             if (account.password.equals(password)) {
                 this.currentAccount = account;
                 dialog = new JDialogCreator("Đăng nhập thành công");
@@ -82,65 +72,62 @@ public class MainSystem {
         return dialog;
     }
 
-    public JDialogCreator createAccount(Account newAccount) throws Exception {
-        this.accountSystem.setCreateAccount(new CreateAccount(this.currentAccount, newAccount));
-        return this.accountSystem.createAccount();
+    public JDialogCreator createAccount(Account newAccount) {
+        accountSystem.setCreateAccount(new CreateAccount(this.currentAccount, newAccount));
+        return accountSystem.createAccount();
     }
 
-    public JDialogCreator deleteAccount(String username) throws Exception {
-        this.accountSystem.setDeleteAccount(new DeleteAccount(this.currentAccount, username));
-        return this.accountSystem.deleteAccount();
+    public JDialogCreator deleteAccount(String username) {
+        accountSystem.setDeleteAccount(new DeleteAccount(this.currentAccount, username));
+        return accountSystem.deleteAccount();
     }
 
-    public JDialogCreator updateUsername(String username) throws Exception {
-        this.accountSystem.setDeleteAccount(new UpdateUsername(this.currentAccount, username));
-        return this.accountSystem.updateUsername();
+    public JDialogCreator updateUsername(String username) {
+        accountSystem.setDeleteAccount(new UpdateUsername(this.currentAccount, username));
+        return accountSystem.updateUsername();
     }
 
-    public JDialogCreator updatePassword(String passwd, String confirmPasswd) throws Exception {
-        this.accountSystem.setUpdatePassword(new UpdatePassword(this.currentAccount, passwd, confirmPasswd));
-        return this.accountSystem.updatePassword();
+    public JDialogCreator updatePassword(String passwd, String confirmPasswd) {
+        accountSystem.setUpdatePassword(new UpdatePassword(this.currentAccount, passwd, confirmPasswd));
+        return accountSystem.updatePassword();
     }
 
-    public JDialogCreator addFlight(Flight flight) throws Exception {
-        this.flightSystem.setStrategy(new AddFlight());
-        return this.flightSystem.execute(flight);
+    public JDialogCreator addFlight(Flight flight, ListFlight listFlight) {
+        flightSystem.setStrategy(new AddFlight());
+        return flightSystem.execute(flight, listFlight);
     }
 
-    public JDialogCreator removeFlight(String id) throws Exception {
-        this.flightSystem.setStrategy(new RemoveFlight());
+    public JDialogCreator removeFlight(String id, ListFlight listFlight) {
+        flightSystem.setStrategy(new RemoveFlight());
         Flight flight = FileLoader.findFlight(id);
-        return this.flightSystem.execute(flight);
+        return flightSystem.execute(flight, listFlight);
     }
 
-    public JDialogCreator updateFlight(Flight flight) throws Exception {
+    public JDialogCreator updateFlight(Flight flight, ListFlight listFlight) {
         if (this.currentAccount instanceof ManagerAccount) {
-            this.flightSystem.setStrategy(new UpdateFlight());
-            return this.flightSystem.execute(flight);
+            flightSystem.setStrategy(new UpdateFlight());
+            return flightSystem.execute(flight, listFlight);
         }
         else return new JDialogCreator("Bạn không có đủ quyền hạn để thực hiện tính năng này!");
     }
 
-    public List<Flight> displayFlight() {
-        return this.flightSystem.getListFlight();
+    public List<Flight> displayFlight(ListFlight listFlight) {
+        return listFlight.getListFlight();
     }
 
-    public void statistic(TicketDecorator decorator) {
-        this.ticketSystem.setDecorator(decorator);
-        this.ticketSystem.statistic();
+    public JDialogCreator statistic(TicketDecorator decorator, ListFlight listFlight) {
+        ticketSystem.setDecorator(decorator);
+        int result = ticketSystem.statistic(listFlight);
+        return new JDialogCreator("Có tổng cộng " + result + " vé đã bán!");
     }
 
-    public List<Flight> displayFlightInclude(TicketDecorator decorator) {
-        this.ticketSystem.setDecorator(decorator);
-        return this.ticketSystem.viewFlightIncluded();
+    public List<Flight> displayFlightInclude(TicketDecorator decorator, ListFlight listFlight) {
+        ticketSystem.setDecorator(decorator);
+        return ticketSystem.viewFlightIncluded(listFlight);
     }
 
-    public void displayTicket(String id) {
-        this.ticketSystem.displayTicket(id);
-    }
-
-    public List<Flight> getListFlight() {
-        return this.flightSystem.getListFlight();
+    public String[][] displayTicket(String id, ListFlight listFlight) {
+        return ticketSystem.displayTicket(id, listFlight);
     }
 
 }

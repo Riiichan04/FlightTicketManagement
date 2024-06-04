@@ -42,59 +42,61 @@ public class Model implements Observable {
             ob.update(dialog);
         }
     }
-    public Map<String, Account> getListAccount() {
-        return this.mainSystem.getListAccount();
-    }
-    public boolean signIn(String username, String password) {
-        JDialogCreator dialog = this.mainSystem.signIn(username, password);
+    public boolean signIn(String username, String password, ListAccount listAccount) {
+        JDialogCreator dialog = this.mainSystem.signIn(username, password, listAccount);
         notifyObserver(dialog);
         return dialog.status;
     }
-    public boolean createAccount(Account newAccount) throws Exception {
+    public boolean createAccount(Account newAccount) {
         JDialogCreator dialog = this.mainSystem.createAccount(newAccount);
         notifyObserver(dialog);
         return dialog.status;
     }
-    public boolean deleteAccount(String username) throws Exception {
+    public boolean deleteAccount(String username) {
         JDialogCreator dialog = this.mainSystem.deleteAccount(username);
         notifyObserver(dialog);
         return dialog.status;
     }
-    public boolean updateUsername(String username) throws Exception {
+    public boolean updateUsername(String username) {
         JDialogCreator dialog = this.mainSystem.updateUsername(username);
         notifyObserver(dialog);
         return dialog.status;
     }
-    public boolean updatePassword(String passwd, String confirmPasswd) throws Exception {
+    public boolean updatePassword(String passwd, String confirmPasswd) {
         JDialogCreator dialog = this.mainSystem.updatePassword(passwd, confirmPasswd);
         notifyObserver(dialog);
         return dialog.status;
     }
-    public boolean addFlight(Flight flight) throws Exception {
-        JDialogCreator dialog = this.mainSystem.addFlight(flight);
+    public boolean addFlight(Flight flight, ListFlight listFlight) {
+        JDialogCreator dialog = this.mainSystem.addFlight(flight, listFlight);
+        dialog.setVisible(true);
         notifyObserver(dialog);
         return dialog.status;
     }
-    public boolean removeFlight(String flightId) throws Exception {
-        JDialogCreator dialog = this.mainSystem.removeFlight(flightId);
+    public boolean removeFlight(String flightId, ListFlight listFlight) {
+        JDialogCreator dialog = this.mainSystem.removeFlight(flightId, listFlight);
+        dialog.setVisible(true);
         notifyObserver(dialog);
         return dialog.status;
     }
-    public boolean updateFlight(Flight flight) throws Exception {
-        JDialogCreator dialog = this.mainSystem.updateFlight(flight);
+    public boolean updateFlight(Flight flight, ListFlight listFlight) {
+        JDialogCreator dialog = this.mainSystem.updateFlight(flight, listFlight);
+        dialog.setVisible(true);
         notifyObserver(dialog);
         return dialog.status;
     }
-    public void displayFlight() {
-        this.mainSystem.displayFlight();
+    public void displayFlight(ListFlight listFlight) {
+        this.mainSystem.displayFlight(listFlight);
     }
-    public void statistic(TicketDecorator decorator) {
-        this.mainSystem.statistic(decorator);
+    public void statistic(TicketDecorator decorator, ListFlight listFlight) {
+        JDialogCreator dialog = this.mainSystem.statistic(decorator, listFlight);
+        dialog.setVisible(true);
+        notifyObserver(dialog);
     }
-    public void displayFlightStatistic(TicketDecorator decorator) {
-        this.mainSystem.displayFlightInclude(decorator);
+    public void displayFlightStatistic(TicketDecorator decorator, ListFlight listFlight) {
+        this.mainSystem.displayFlightInclude(decorator, listFlight);
     }
-    public void displayTicket(String id) {
-        this.mainSystem.displayTicket(id);
+    public String[][] displayTicket(String id, ListFlight listFlight) {
+        return this.mainSystem.displayTicket(id, listFlight);
     }
 }

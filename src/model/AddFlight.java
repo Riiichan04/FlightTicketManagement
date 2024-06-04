@@ -9,13 +9,24 @@ public class AddFlight extends FlightStrategy {
     }
 
     @Override
-    public JDialogCreator execute(Flight flight) throws Exception {
-        if (!FileConverter.convertFightToTxt(flight) || flight.getPlane().getSeatCount() != flight.getListSeat().size()) {
-            return new JDialogCreator("Bạn cần nhập đủ thông tin");
-        }
-        else {
-            this.getListFlight().add(flight);
-            return new JDialogCreator("Thêm chuyến bay thành công!");
+    public JDialogCreator execute(Flight flight, ListFlight listFlight) {
+        JDialogCreator result;
+        try {
+            FileConverter.convertFightToTxt(flight);
+            if (flight.getPlane().getSeatCount() != flight.getListSeat().size()) {
+                result = new JDialogCreator("Bạn cần nhập đủ thông tin");
+                result.setStatus(false);
+                return result;
+            } else {
+                listFlight.getListFlight().add(flight);
+                result = new JDialogCreator("Thêm chuyến bay thành công!");
+                result.setStatus(true);
+                return result;
+            }
+        } catch (Exception e) {
+            result = new JDialogCreator("Bạn cần nhập đủ thông tin");
+            result.setStatus(false);
+            return result;
         }
     }
 }

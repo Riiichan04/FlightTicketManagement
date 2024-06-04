@@ -8,20 +8,30 @@ public class ManagerAccount extends Account {
     }
 
     @Override
-    public boolean createAccount(Account account) throws Exception {
+    public boolean createAccount(Account account) {
         if (this.getListAccount().get(account.username) != null || findAccountByEmployee(account.info) != null) return false;
         else {
-            FileConverter.convertAccountToTxt(account);
-            return true;
+            try {
+                FileConverter.convertAccountToTxt(account);
+                return true;
+            }
+            catch (Exception e) {
+                return false;
+            }
         }
     }
 
     @Override
-    public boolean deleteAccount(String username) throws Exception {
+    public boolean deleteAccount(String username) {
         if (this.getListAccount().get(username) == null) return false;
         else {
-            FileConverter.deleteAccountInTxt(username);
-            return true;
+            try {
+                FileConverter.deleteAccountInTxt(username);
+                return true;
+            }
+            catch (Exception e) {
+                return false;
+            }
         }
     }
 

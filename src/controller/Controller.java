@@ -22,8 +22,7 @@ public class Controller implements IController{
         ListFlight lf = new ListFlight();
         lf.loadFlight();
         MainSystem ms = MainSystem.getInstance();
-        ms.setListAccount(la);
         Model model = new Model(ms);
-        SignInFrame view = new SignInFrame(model);
+        SignInFrame view = new SignInFrame(model, la, lf);
     }
 }

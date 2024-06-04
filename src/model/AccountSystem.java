@@ -17,19 +17,19 @@ public class AccountSystem {
         this.updatePassword = updatePassword;
     }
 
-    public JDialogCreator createAccount() throws Exception {
+    public JDialogCreator createAccount() {
         return createAccount.execute();
     }
 
-    public JDialogCreator deleteAccount() throws Exception {
+    public JDialogCreator deleteAccount() {
         return deleteAccount.execute();
     }
 
-    public JDialogCreator updateUsername() throws Exception {
+    public JDialogCreator updateUsername() {
         return updatePassword.execute();
     }
 
-    public JDialogCreator updatePassword() throws Exception {
+    public JDialogCreator updatePassword() {
         return updatePassword.execute();
     }
 

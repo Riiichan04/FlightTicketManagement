@@ -56,42 +56,64 @@ public interface FileLoader {
         return null;
     }
 
-    static Flight findFlight(String id) throws Exception {
-        File f = new File("src/data/flight");
-        File[] listFile = f.listFiles((dir, name) -> name.startsWith(id) && name.endsWith("txt"));
-        if (listFile == null) return null;
-        else {
-            //Create Flight
-            BufferedReader br = new BufferedReader(new FileReader(listFile[0]));
+    static Flight findFlight(String id) {
+        try {
+            File f = new File("src/data/flight");
+            File[] listFile = f.listFiles((dir, name) -> name.startsWith(id) && name.endsWith("txt"));
+            if (listFile == null) return null;
+            else {
+                //Create Flight
+                BufferedReader br = new BufferedReader(new FileReader(listFile[0]));
+                return createFlight(br);
+            }
+        }
+       catch (Exception e) {
+            return null;
+       }
+    }
+
+    static Flight createFlightFromFile(File file) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
             return createFlight(br);
         }
-    }
-
-    static Flight createFlight(BufferedReader br) throws Exception {
-        //Create Flight
-        Flight flight = new Flight();
-        //Set Id
-        flight.setId(br.readLine());
-        String[] planeArr = br.readLine().split("\\|");
-        //Set Route
-        String[] arr = br.readLine().split("\\|");
-        flight.setRoute(new Route(arr[0], arr[1]));
-        //Set Date
-        arr = br.readLine().split("\\|");
-        flight.setDate(new Date(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2])));
-        //Set Plane
-        int seatCount = Integer.parseInt(br.readLine());
-        flight.setPlane(new Plane(planeArr[0], planeArr[1], planeArr[2], seatCount, Double.parseDouble(planeArr[3]), planeArr[4].equals("true")));
-        //Set ListSeat
-        Map<String, String> listSeat = new HashMap<>();
-        String line = "";
-        while ((line = br.readLine()) != null) {
-            String[] arrLine = line.split("\\|");
-            if ((arrLine[1].equals("null"))) listSeat.put(arrLine[0], null);
-            else listSeat.put(arrLine[0], arrLine[1]);
+        catch (Exception e) {
+            System.out.println("Không load chuyến bay được");
+            return null;
         }
-        flight.setListSeat(listSeat);
-
-        return flight;
     }
+
+    static Flight createFlight(BufferedReader br) {
+        try {
+            //Create Flight
+            Flight flight = new Flight();
+            //Set Id
+            flight.setId(br.readLine());
+            String[] planeArr = br.readLine().split("\\|");
+            //Set Route
+            String[] arr = br.readLine().split("\\|");
+            flight.setRoute(new Route(arr[0], arr[1]));
+            //Set Date
+            arr = br.readLine().split("\\|");
+            flight.setDate(new Date(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2])));
+            //Set Plane
+            int seatCount = Integer.parseInt(br.readLine());
+            flight.setPlane(new Plane(planeArr[0], planeArr[1], planeArr[2], seatCount, Double.parseDouble(planeArr[3]), planeArr[4].equals("true")));
+            //Set ListSeat
+            Map<String, String> listSeat = new HashMap<>();
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                String[] arrLine = line.split("\\|");
+                if ((arrLine[1].equals("null"))) listSeat.put(arrLine[0], null);
+                else listSeat.put(arrLine[0], arrLine[1]);
+            }
+            flight.setListSeat(listSeat);
+
+            return flight;
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
+
 }

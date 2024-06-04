@@ -1,4 +1,4 @@
-root|1|null|null|null|false
+root|1|null|null|manager|false
 NieNieNe|21112004|Trần Thị Mỹ Tuyền|m001|manager|false
 DiNguThui|01022003|Nguyễn Hoàng Thanh Hải|s001|staff|true
 Trang27|04072716|Lâm Thị Gia Hân|s002|staff|true

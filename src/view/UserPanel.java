@@ -11,10 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public abstract class UserPanel extends JPanel {
-    protected ListFlight listFlight;
-    protected ListAccount listAccount;
-    protected IModel model;
+public class UserPanel extends JPanel {
+    protected Model model;
     protected Account currentAccount;
     protected JPanel sidePanel;
     protected JPanel resultPanel;
@@ -22,26 +20,18 @@ public abstract class UserPanel extends JPanel {
     protected TicketPanel ticketPanel;
     protected FlightPanel flightPanel;
     protected CardLayout cardLayout = new CardLayout();
-    public UserPanel(Account currentAccount, List<Flight> lf, Map<String, Account> la) throws Exception {
+    public UserPanel(Account currentAccount, Model model, ListFlight lf) {
         this.currentAccount = currentAccount;
+        this.model = model;
         setLayout(null);
         this.sidePanel = this.createSidePanel(new Rectangle(0, 0, 200, 680));
         this.resultPanel = this.createResultPanel(new Rectangle(200, 0, 800, 680));
         accountPanel = new AccountPanel(new Rectangle(200, 0, 800, 600), currentAccount);
-        ticketPanel = new TicketPanel(new Rectangle(200, 0, 800, 600));
-//        flightPanel = new FlightPanel(new Rectangle(200, 0, 800, 600), lf);
+        ticketPanel = new TicketPanel(new Rectangle(200, 0, 800, 600), lf, model);
+        flightPanel = new FlightPanel(new Rectangle(200, 0, 800, 600), lf, model);
         resultPanel.add("ap", accountPanel);
         resultPanel.add("tp", ticketPanel);
         resultPanel.add("fp", flightPanel);
-        add(sidePanel);
-        add(resultPanel);
-    }
-
-    public UserPanel(Account currentAccount, IModel model) throws Exception {
-        this.currentAccount = currentAccount;
-        this.model = model;
-        this.sidePanel = this.createSidePanel(new Rectangle(0, 0, 200, 680));
-        this.resultPanel = this.createResultPanel(new Rectangle(200, 0, 800, 680));
         add(sidePanel);
         add(resultPanel);
     }
@@ -56,7 +46,7 @@ public abstract class UserPanel extends JPanel {
         this.resultPanel = resultPanel;
         super.repaint();
     }
-    public JPanel createSidePanel(Rectangle bounds) throws Exception {
+    public JPanel createSidePanel(Rectangle bounds) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panel.setBounds(bounds);
         panel.setBorder(new MatteBorder(0, 0, 0, 1, Color.BLACK));
@@ -92,23 +82,16 @@ public abstract class UserPanel extends JPanel {
             panel.add(btn);
 
             switch (i) {
-                case 1 -> {
-                    btn.addActionListener(e -> cardLayout.show(resultPanel, "fp"));
-                }
-                case 2 -> {
-                    btn.addActionListener(e -> cardLayout.show(resultPanel, "tp"));
-                }
-                case 3 -> {
-                    btn.addActionListener(e -> cardLayout.show(resultPanel, "ap"));
-                }
+                case 1 -> btn.addActionListener(e -> cardLayout.show(resultPanel, "fp"));
+                case 2 -> btn.addActionListener(e -> cardLayout.show(resultPanel, "tp"));
+                case 3 -> btn.addActionListener(e -> cardLayout.show(resultPanel, "ap"));
             }
-
         }
 
 
         return panel;
     }
-    public JPanel createResultPanel(Rectangle bounds) throws Exception {
+    public JPanel createResultPanel(Rectangle bounds) {
         JPanel panel = new JPanel(cardLayout);
         panel.setBounds(bounds);
         CustomLabel label = new CustomLabel("Hãy chọn một tính năng để thực hiện");

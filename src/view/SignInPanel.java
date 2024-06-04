@@ -1,5 +1,7 @@
 package view;
 
+import model.ListAccount;
+import model.ListFlight;
 import model.Model;
 import utilities.CustomLabel;
 import utilities.FontLoader;
@@ -8,12 +10,13 @@ import utilities.JDialogCreator;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.util.Arrays;
 
 public class SignInPanel extends JPanel {
-    public SignInPanel(Model model) throws Exception {
+    public SignInPanel(Model model, ListAccount listAccount, ListFlight listFlight) throws Exception {
         setLayout(null);
         setBackground(Color.DARK_GRAY);
-        add(new SignInForm(model));
+        add(new SignInForm(model, listAccount, listFlight));
     }
 
     class SignInForm extends JPanel implements View, Observer {
@@ -22,7 +25,8 @@ public class SignInPanel extends JPanel {
         JPasswordField passwd;
         JButton button;
         Model model;
-        public SignInForm(Model model) throws Exception {
+
+        public SignInForm(Model model, ListAccount listAccount, ListFlight listFlight) {
             this.model = model;
             model.addObserver(this);
             Font robotoMedium = FontLoader.loadFont("src/asset/font/Roboto-Medium.ttf");
@@ -57,23 +61,10 @@ public class SignInPanel extends JPanel {
             this.button.setFocusable(false);
             this.button.setBackground(new Color(0, 227, 114));
             this.button.addActionListener(e -> {
-                if (model.signIn(this.account.getText(), this.account.getText())) {
+                if (model.signIn(this.account.getText(), new String(this.passwd.getPassword()), listAccount)) {
                     model.removeObserver(0);
                     ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
-                    switch (model.getMainSystem().getCurrentAccount().getInfo().getPosition()) {
-                        case "staff" -> {
-                            try {
-                                new WorkFrame(new StaffPanel((model.getMainSystem().getCurrentAccount()), model.getMainSystem().getListFlight(), model.getListAccount()));
-                            } catch (Exception ex) {
-                                throw new RuntimeException(ex);
-                            }
-                        }
-                        case "manager" -> {
-                            try {
-                                new WorkFrame(new AdminPanel((model.getMainSystem().getCurrentAccount()), model.getMainSystem().getListFlight(), model.getListAccount()));
-                            } catch (Exception ex) { }
-                        }
-                    }
+                    model.addObserver(new WorkFrame(new UserPanel((model.getMainSystem().getCurrentAccount()), model, listFlight)));
                 }
             });
 

@@ -25,11 +25,4 @@ public class WorkFrame extends JFrame implements View {
     public void update(JDialogCreator dialog) {
 
     }
-
-    public static void main(String[] args) throws Exception {
-        ManagerAccount account = new ManagerAccount("omg", "11111", new Employee("Nguyễn Văn D", "nv101", "staff"), false);
-        ListFlight lf = new ListFlight();
-        lf.loadFlight();
-        ListAccount la = new ListAccount();
-    }
 }

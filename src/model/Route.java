@@ -28,4 +28,8 @@ public class Route {
 		return this.departure.equals(route.departure) && this.arrival.equals(route.arrival);
 	}
 
+	@Override
+	public String toString() {
+		return this.departure + this.arrival;
+	}
 }

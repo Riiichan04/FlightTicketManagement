@@ -7,8 +7,13 @@ import java.util.*;
 public class ListAccount {
     private Map<String, Account> listAccount;
 
-    public void loadAccount() throws Exception {
-        this.listAccount = FileLoader.loadAccount();
+    public void loadAccount() {
+        try {
+            this.listAccount = FileLoader.loadAccount();
+        }
+        catch (Exception e) {
+            System.out.println("Không thể load danh sách tài khoản");
+        }
     }
 
     Account findAccountByEmployee(Employee employee) {

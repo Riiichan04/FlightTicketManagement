@@ -12,7 +12,7 @@ public class UpdateUsername implements AccountCommand {
     }
 
     @Override
-    public JDialogCreator execute() throws Exception {
+    public JDialogCreator execute() {
         if (this.account.updateUsername(username)) {
             return new JDialogCreator("Bạn đã thay đổi tên đăng nhập thành công!");
         }
