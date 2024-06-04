@@ -87,8 +87,8 @@ public class MainSystem {
         return accountSystem.updateUsername(listAccount);
     }
 
-    public JDialogCreator updatePassword(String passwd, String confirmPasswd, ListAccount listAccount) {
-        accountSystem.setUpdatePassword(new UpdatePassword(this.currentAccount, passwd, confirmPasswd));
+    public JDialogCreator updatePassword(String currentPassword, String passwd, String confirmPasswd, ListAccount listAccount) {
+        accountSystem.setUpdatePassword(new UpdatePassword(this.currentAccount, currentPassword, passwd, confirmPasswd));
         return accountSystem.updatePassword(listAccount);
     }
 

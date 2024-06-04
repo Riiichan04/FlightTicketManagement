@@ -10,5 +10,5 @@ LindaPham|63527422|Thanh Hoàng Phúc|s007|staff|true
 TranThanhTam|73427533|Trần Thanh Tâm|s008|staff|true
 NgFame|34236493|Nguyễn Kha Trọng Anh|s009|manager|true
 DNV|nguyenvd|m010|NgVanD||manager|true
-staff12|s011|s011|thuythuy0101|staff|false
+staff12|11111111|s011|thuythuy0101||staff|false
 staff14|s014|s014|Kim Thịnh|staff|false

@@ -76,11 +76,13 @@ public class TicketPanel extends JPanel {
         sbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         sbtn.setFocusable(false);
         sbtn.addActionListener(e -> {
+            //Thực hiện tính năng, lấy thông tin truyền vào data
             this.data = model.displayTicket(viewInput.getText(), listFlight);
             if (this.data == null) {
                 new JDialogCreator("Không tìm thấy chuyến bay!!!").setVisible(true);
             }
             else {
+                //Update thông tin cho bảng để hiển thị
                 viewTable.setModel(new DefaultTableModel(data, listColView) {
                     @Override
                     public boolean isCellEditable(int row, int column) {
@@ -155,18 +157,23 @@ public class TicketPanel extends JPanel {
 
     public ActionListener statistic(ListFlight listFlight) {
         return e -> {
+            //Mặc định là không có lọc
             TicketDecorator decorator = new NoFilter();
+            //Chồng lên lọc theo số lượng
             if (isAmountFilter()) {
                 decorator = new AmountFilter(decorator, Integer.parseInt(topFilter[0].getText()));
             }
+            //Chồng lên lọc theo hãng bay
             if (isBrandFilter()) {
                 decorator = new BrandFilter(decorator, topFilter[1].getText());
             }
+            //Chồng lên lọc theo thời gian
             if (isDateFilter()) {
                 Date fromDate = new Date(Integer.parseInt(botFilter[0].getText()), Integer.parseInt(botFilter[1].getText()), Integer.parseInt(botFilter[2].getText()));
                 Date toDate = new Date(Integer.parseInt(botFilter[3].getText()), Integer.parseInt(botFilter[4].getText()), Integer.parseInt(botFilter[5].getText()));
                 decorator = new DateFilter(decorator, fromDate, toDate);
             }
+            //Thực hiện lọc
             model.statistic(decorator, listFlight);
         };
     }
@@ -201,9 +208,6 @@ public class TicketPanel extends JPanel {
         };
     }
 
-    private boolean isNoFilter() {
-        return !isAmountFilter() && !isBrandFilter() && !isDateFilter();
-    }
     private boolean isAmountFilter() {
         try {
             Integer.parseInt(topFilter[0].getText());

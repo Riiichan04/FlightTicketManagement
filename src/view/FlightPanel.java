@@ -74,6 +74,7 @@ public class FlightPanel extends JPanel {
 
     public ActionListener addFlight(ListFlight listFlight) {
         return e -> {
+            //Tạo 1 JFileChooser
             JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
             fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Only txt file", "txt"));
             int returnValue = fileChooser.showOpenDialog(null);

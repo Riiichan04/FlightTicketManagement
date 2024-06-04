@@ -52,6 +52,7 @@ public class AccountPanel extends JPanel {
 
     public ActionListener addAccount(ListAccount listAccount) {
         return e -> {
+            //Tạo panel cho dialog
             JPanel mainPanel = new JPanel();
             mainPanel.setLayout(new GridLayout(3, 2, 0, 5));
             Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");
@@ -64,12 +65,15 @@ public class AccountPanel extends JPanel {
                 mainPanel.add(listLabel[i]);
                 mainPanel.add(listInput[i]);
             }
+            //Tạo dialog và hiển thị
             new JDialogCreator(mainPanel, JDialogCreator.WARNING_DIALOG, event -> {
+                //Event khi nhấn vào btn "Xác nhận"
                 String[] listInfo = new String[3];
                 for (int i = 0; i < listInfo.length; i++) {
                     listInfo[i] = listInput[i].getText();
                 }
                 int nextAccountId = listAccount.getListAccount().size();
+                //Lấy thông tin và tiến hành thực hiện tính năng
                 switch (listInfo[2].toLowerCase()) {
                     case "staff" -> {
                         model.createAccount(new StaffAccount("staff" + nextAccountId, listInfo[1], new Employee(listInfo[0], listInfo[1], listInfo[2]), false), listAccount);
@@ -84,6 +88,7 @@ public class AccountPanel extends JPanel {
 
     public ActionListener deleteAccount(ListAccount listAccount) {
         return e -> {
+            //Tạo panel cho dialog
             JPanel mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");
             CustomLabel label = new CustomLabel("Nhập tên tài khoản muốn xóa:");
@@ -92,7 +97,9 @@ public class AccountPanel extends JPanel {
             input.setFont(FontLoader.loadCustomizeFont(robotoLight, 15f));
             mainPanel.add(label);
             mainPanel.add(input);
+            //Tạo dialog và hiển thị
             new JDialogCreator(mainPanel, JDialogCreator.WARNING_DIALOG, event -> {
+                //Thực hiện tính năng
                 this.model.deleteAccount(input.getText(), listAccount);
             }, new Dimension(500, 150)).setVisible(true);
         };
@@ -109,6 +116,7 @@ public class AccountPanel extends JPanel {
             mainPanel.add(label);
             mainPanel.add(input);
             new JDialogCreator(mainPanel, JDialogCreator.WARNING_DIALOG, event -> {
+                //Thực hiện tính năng
                 this.model.updateUsername(input.getText(), listAccount);
             }, new Dimension(500, 150)).setVisible(true);
         };
@@ -116,21 +124,27 @@ public class AccountPanel extends JPanel {
     public ActionListener updatePassword(ListAccount listAccount) {
         return e -> {
             JPanel mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            JPanel infoPanel = new JPanel(new GridLayout(2, 2, 5, 0));
+            JPanel infoPanel = new JPanel(new GridLayout(3, 2, 5, 0));
             Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");
+            CustomLabel currentPasswdLabel = new CustomLabel("Nhập mật khẩu hiện tại");
+            JPasswordField currentInput = new JPasswordField(15);
             CustomLabel passwdLabel = new CustomLabel("Nhập mật khẩu mới");
             JPasswordField input = new JPasswordField(15);
             CustomLabel confirmPasswdLabel = new CustomLabel("Xác nhận mật khẩu mới: ");
             JPasswordField confirmInput = new JPasswordField(15);
+            currentPasswdLabel.setFont(FontLoader.loadCustomizeFont(robotoLight, 15f));
             passwdLabel.setFont(FontLoader.loadCustomizeFont(robotoLight, 15f));
             confirmPasswdLabel.setFont(FontLoader.loadCustomizeFont(robotoLight, 15f));
+            infoPanel.add(currentPasswdLabel);
+            infoPanel.add(currentInput);
             infoPanel.add(passwdLabel);
             infoPanel.add(input);
             infoPanel.add(confirmPasswdLabel);
             infoPanel.add(confirmInput);
             mainPanel.add(infoPanel);
             new JDialogCreator(mainPanel, JDialogCreator.WARNING_DIALOG, event -> {
-                this.model.updatePassword(new String(input.getPassword()), new String(confirmInput.getPassword()), listAccount);
+                //Thực hiện tính năng
+                this.model.updatePassword(new String(currentInput.getPassword()), new String(input.getPassword()), new String(confirmInput.getPassword()), listAccount);
             }, new Dimension(500, 150)).setVisible(true);
         };
     }

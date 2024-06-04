@@ -65,7 +65,8 @@ public abstract class Account {
             }
         }
     }
-    public boolean updatePassword(String password, String confirmPassword, ListAccount listAccount) {
+    public boolean updatePassword(String currentPassword, String password, String confirmPassword, ListAccount listAccount) {
+        if (!this.getPassword().equals(currentPassword)) return false;
         if (!password.equals(confirmPassword)) return false;
         else {
             try {
