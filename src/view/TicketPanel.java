@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
+
 public class TicketPanel extends JPanel {
     JTabbedPane tabbedPane;
     IModel model;
@@ -24,6 +25,7 @@ public class TicketPanel extends JPanel {
     JPanel viewTab;
     JTextField viewInput;
     JTable viewTable;
+
     public TicketPanel(Rectangle r, ListFlight listFlight, IModel model) {
         setBounds(r);
         this.tabbedPane = createTabbedPane(listFlight);
@@ -81,8 +83,7 @@ public class TicketPanel extends JPanel {
             this.data = model.displayTicket(viewInput.getText(), listFlight);
             if (this.data == null) {
                 new JDialogCreator("Không tìm thấy chuyến bay!!!").setVisible(true);
-            }
-            else {
+            } else {
                 //Update thông tin cho bảng để hiển thị
                 viewTable.setModel(new DefaultTableModel(data, listColView) {
                     @Override
@@ -174,8 +175,8 @@ public class TicketPanel extends JPanel {
                 Date toDate = new Date(Integer.parseInt(botFilter[3].getText()), Integer.parseInt(botFilter[4].getText()), Integer.parseInt(botFilter[5].getText()));
                 decorator = new DateFilter(decorator, fromDate, toDate);
             }
-            //Thực hiện lọc
             model.statistic(decorator, listFlight);
+            //Thực hiện lọc
         };
     }
 
@@ -184,8 +185,7 @@ public class TicketPanel extends JPanel {
             this.data = model.displayTicket(id, listFlight);
             if (this.data == null) {
                 new JDialogCreator("Không tìm thấy chuyến bay!!!").setVisible(true);
-            }
-            else {
+            } else {
                 Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");
                 JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
                 scrollPane.setPreferredSize(new Dimension(700, 200));
@@ -213,34 +213,34 @@ public class TicketPanel extends JPanel {
         try {
             Integer.parseInt(topFilter[0].getText());
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
+
     private boolean isBrandFilter() {
-       return !topFilter[1].getText().equals("");
+        return !topFilter[1].getText().equals("");
     }
+
     private boolean isDateFilter() {
         for (JTextField jTextField : botFilter) {
             if (jTextField.getText().equals("")) return false;
         }
-        try {
-            Date fromDate = new Date(Integer.parseInt(botFilter[0].getText()), Integer.parseInt(botFilter[1].getText()), Integer.parseInt(botFilter[2].getText()));
-            Date toDate = new Date(Integer.parseInt(botFilter[3].getText()), Integer.parseInt(botFilter[4].getText()), Integer.parseInt(botFilter[5].getText()));
-            return fromDate.toMilisecond() <= toDate.toMilisecond();
-        }
-        catch (Exception e) {
-            return false;
-        }
+        return true;
     }
 
     private Object[][] formatData(List<Flight> listFlight) {
         return listFlight.stream().map(obj -> new String[]{
                 obj.getId(), obj.getPlane().getId(), obj.getPlane().getName(),
-                obj.getPlane().getBrand(), ""+obj.getPlane().getSeatCount(), ""+obj.getPlane().getWeight(),
+                obj.getPlane().getBrand(), "" + obj.getPlane().getSeatCount(), "" + obj.getPlane().getWeight(),
                 obj.getRoute().getArrival(), obj.getRoute().getDeparture(),
                 obj.getDate().toString()
         }).toArray(String[][]::new);
+    }
+
+    private boolean isValidFilter() {
+        Date fromDate = new Date(Integer.parseInt(botFilter[0].getText()), Integer.parseInt(botFilter[1].getText()), Integer.parseInt(botFilter[2].getText()));
+        Date toDate = new Date(Integer.parseInt(botFilter[3].getText()), Integer.parseInt(botFilter[4].getText()), Integer.parseInt(botFilter[5].getText()));
+        return fromDate.toMilisecond() <= toDate.toMilisecond();
     }
 }

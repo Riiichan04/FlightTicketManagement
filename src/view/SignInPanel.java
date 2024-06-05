@@ -60,6 +60,8 @@ public class SignInPanel extends JPanel {
             this.button.setFocusable(false);
             this.button.setBackground(new Color(0, 227, 114));
             this.button.addActionListener(e -> {
+                System.out.println(this.account.getText());
+                System.out.println(listAccount.getListAccount().toString());
                 if (model.signIn(this.account.getText(), new String(this.passwd.getPassword()), listAccount)) {
                     model.removeObserver(0);
                     ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();

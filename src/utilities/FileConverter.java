@@ -75,7 +75,7 @@ public interface FileConverter {
         while ((currentLine = br.readLine()) != null) {
             String inputUsername = currentLine.split("\\|")[3];
             if(!inputUsername.equals(account.getInfo().getId())) listLine.add(currentLine);
-            else listLine.add(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getName() +"|" + account.getInfo().getId().trim() + "|"  + "|" + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername());
+            else listLine.add(account.getUsername().trim() + "|" + account.getPassword().trim() + "|" + account.getInfo().getName() +"|" + account.getInfo().getId().trim() + "|" + account.getInfo().getPosition().trim() + "|" + account.isChangedUsername());
         }
         PrintWriter pw = new PrintWriter(input);
         for (String line : listLine) {

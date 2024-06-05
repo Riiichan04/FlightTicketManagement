@@ -17,8 +17,13 @@ public class Date {
     }
 
     public long toMilisecond() {
-        LocalDateTime localDateTime = LocalDate.parse(day + " " + month + " " + year, DateTimeFormatter.ofPattern("dd MM yyyy")).atStartOfDay();
-        return localDateTime.toEpochSecond(ZoneOffset.UTC) * 1000;
+        try {
+            LocalDateTime localDateTime = LocalDate.parse(day + " " + month + " " + year, DateTimeFormatter.ofPattern("d M yyyy")).atStartOfDay();
+            return localDateTime.toEpochSecond(ZoneOffset.UTC) * 1000;
+        }
+        catch (Exception e) {
+            return -1;
+        }
     }
 
     public int getDay() {

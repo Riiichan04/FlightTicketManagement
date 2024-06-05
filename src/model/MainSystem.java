@@ -3,7 +3,9 @@ package model;
 import utilities.FileLoader;
 import utilities.JDialogCreator;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class MainSystem {
     private static MainSystem instance;
@@ -11,10 +13,10 @@ public class MainSystem {
     private static FlightSystem flightSystem;
     private static TicketSystem ticketSystem;
     private Account currentAccount;
-    private MainSystem()  {
+    private MainSystem() {
     }
 
-    public static MainSystem getInstance()  {
+    public static MainSystem getInstance() {
         if (instance == null) {
             instance = new MainSystem();
             accountSystem = new AccountSystem();
@@ -100,8 +102,7 @@ public class MainSystem {
     public JDialogCreator removeFlight(String id, ListFlight listFlight) {
         if (currentAccount instanceof StaffAccount) {
             return new JDialogCreator("Bạn không có quyền hạn để thực hiện tính năng này!");
-        }
-        else {
+        } else {
             flightSystem.setStrategy(new RemoveFlight());
             Flight flight = FileLoader.findFlight(id);
             return flightSystem.execute(flight, listFlight);
@@ -112,8 +113,7 @@ public class MainSystem {
         if (this.currentAccount instanceof ManagerAccount) {
             flightSystem.setStrategy(new UpdateFlight());
             return flightSystem.execute(flight, listFlight);
-        }
-        else return new JDialogCreator("Bạn không có đủ quyền hạn để thực hiện tính năng này!");
+        } else return new JDialogCreator("Bạn không có đủ quyền hạn để thực hiện tính năng này!");
     }
 
     public List<Flight> displayFlight(ListFlight listFlight) {
@@ -123,6 +123,7 @@ public class MainSystem {
     public JDialogCreator statistic(TicketDecorator decorator, ListFlight listFlight) {
         ticketSystem.setDecorator(decorator);
         int result = ticketSystem.statistic(listFlight);
+        if (result == 0) return new JDialogCreator("Không tìm thấy chuyến bay nào!");
         return new JDialogCreator("Có tổng cộng " + result + " vé đã bán!");
     }
 

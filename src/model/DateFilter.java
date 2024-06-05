@@ -16,6 +16,8 @@ public class DateFilter extends Filter {
 
     @Override
     public List<Flight> execute(List<Flight> listFlight) {
+        if (fromDate.toMilisecond() > toDate.toMilisecond()) return new LinkedList<>();
+        if (fromDate.toMilisecond() == -1 || toDate.toMilisecond() == -1) return new LinkedList<>();
         return wrapper.execute(listFlight.stream().filter(obj -> obj.getDate().toMilisecond() >= this.fromDate.toMilisecond() &&
                 obj.getDate().toMilisecond() <= this.toDate.toMilisecond() && !obj.getPlane().isLanding()).toList());
     }

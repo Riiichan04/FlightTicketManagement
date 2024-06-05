@@ -15,6 +15,7 @@ public class AccountPanel extends JPanel {
     JButton[] listButton = new JButton[4];
     IModel model;
     Account currentAccount;
+    CustomLabel[] listLabel = new CustomLabel[8];
 
     public AccountPanel(Rectangle bounds, Account currentAccount, ListAccount listAccount, IModel model) {
         this.model = model;
@@ -24,7 +25,6 @@ public class AccountPanel extends JPanel {
         Font robotoLight = FontLoader.loadFont("src/asset/font/Roboto-Light.ttf");
         Font robotoMedium = FontLoader.loadFont("src/asset/font/Roboto-Medium.ttf");
         String[] listTitle = {"Tên tài khoản: ", currentAccount.getUsername(), "Tên nhân viên: ", currentAccount.getInfo().getName(), "Mã nhân viên: ", currentAccount.getInfo().getId(), "Chức vụ: ", currentAccount.getInfo().getPosition()};
-        CustomLabel[] listLabel = new CustomLabel[8];
         for (int i = 0; i < listLabel.length; i++) {
             listLabel[i] = new CustomLabel(listTitle[i]);
             if (i % 2 == 0) listLabel[i].setCustomFont(robotoLight, 15f);
@@ -119,6 +119,7 @@ public class AccountPanel extends JPanel {
             new JDialogCreator(mainPanel, JDialogCreator.WARNING_DIALOG, event -> {
                 //Thực hiện tính năng
                 this.model.updateUsername(input.getText(), listAccount);
+                this.listLabel[1].setText(this.model.getMainSystem().getCurrentAccount().getUsername());
             }, new Dimension(500, 150)).setVisible(true);
         };
     }
