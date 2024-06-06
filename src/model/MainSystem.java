@@ -14,14 +14,15 @@ public class MainSystem {
     private static TicketSystem ticketSystem;
     private Account currentAccount;
     private MainSystem() {
+        accountSystem = new AccountSystem();
+        flightSystem = new FlightSystem();
+        ticketSystem = new TicketSystem();
     }
 
     public static MainSystem getInstance() {
         if (instance == null) {
             instance = new MainSystem();
-            accountSystem = new AccountSystem();
-            flightSystem = new FlightSystem();
-            ticketSystem = new TicketSystem();
+
         }
         return instance;
     }

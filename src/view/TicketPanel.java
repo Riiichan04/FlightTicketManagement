@@ -20,7 +20,7 @@ public class TicketPanel extends JPanel {
     JTextField[] botFilter;
     Object[][] data;
     String[] listColView = {"Mã số ghế", "Mã hành khách"};
-    String[] listColStatistic = {"Mã chuyến bay", "Số hiệu máy bay", "Tên máy bay", "Hãng bay", "Số lượng ghế", "Trọng lượng", "Nơi đi", "Nơi đến", "Ngày cất cánh"};
+    String[] listColStatistic = {"Mã chuyến bay", "Số lượng ghế", "Số vé"};
     JPanel wrapperTab;
     JPanel viewTab;
     JTextField viewInput;
