@@ -1,20 +1,2 @@
 root|1|null|null|manager|false
-Tuyen|21112111|Trần Thị Mỹ Tuyền|m001|manager|true
-DiNguThui|01022003|Nguyễn Hoàng Thanh Hải|s001|staff|true
-Trang27|04072716|Lâm Thị Gia Hân|s002|staff|true
-HieuThu3|18364926|Trần Minh Hiếu|s003|staff|true
-SonTung|17382530|Nguyễn Thanh Tùng|m004|manager|true
-jennie|74534245|Trần Nguyễn Thanh Hằng|s005|staff|true
-DavidNgo|37247352|Lê Trình Sơn|s006|staff|false
-LindaPham|63527422|Thanh Hoàng Phúc|s007|staff|true
-TranThanhTam|73427533|Trần Thanh Tâm|s008|staff|true
-NgFame|34236493|Nguyễn Kha Trọng Anh|s009|manager|true
-DNV|nguyenvd|m010|NgVanD||manager|true
-staff12|11111111|s011|thuythuy0101|staff|false
-staff14|s014|s014|Kim Thịnh|staff|false
-staff10|s015|Trương Công Nhân|s015|staff|false
-manager10|m016|Hoàn Công Thụ|m016|manager|false
-AAABBBCCC|m017|ABCABC|m017|manager|true
-NguyenVanCBD|01010101|CBDCBD|s018||staff|true
-Lâm Minh Trí|minhtri|Tri|m020|manager|true
-staff17|67|uuu|67|staff|false
+
