@@ -15,6 +15,7 @@ public interface FileLoader {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line = "";
         while ((line = br.readLine()) != null) {
+            if (line.equals("") continue; 
             String[] arr = line.split("\\|");
             switch (arr[4]) {
                 case "manager" ->
@@ -43,6 +44,7 @@ public interface FileLoader {
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line = "";
         while ((line = br.readLine()) != null) {
+            if (line.equals("") continue; 
             String[] arr = line.split("\\|");
             if (arr[0].equals(username)) {
                 switch (arr[4]) {
